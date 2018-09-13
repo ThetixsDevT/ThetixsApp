@@ -1,0 +1,8 @@
+Creacion de cuenta github para el proyecto en general
+Actualizacion archivo de credenciales (incluido en el repositorio)
+Upgrade Instancia Linux de Amazon ubunutu14.04 a ubuntu16.04 (obtener PCI)
+Booking Form para www.thetixs.com y para www.thetixsapp.com (este ultimo esta listo)
+Collage pagina www.thetixs.com
+Contact form para www.thetixs.com
+Generacion de reportes (30 - 60 dias de funcionamiento)
+Graficos Dashboard affiliate, partner y Administrator

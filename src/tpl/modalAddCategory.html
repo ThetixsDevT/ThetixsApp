@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h3 class="modal-title" ><span translate="interface.all.ADD_CATEGORY"></span></h3>
+</div>
+<div class="modal-body">
+    
+        <div class="form-group">
+            <div class="col-md-18">
+                <span translate="interface.all.DESCRIPTION"></span>
+                <input type="text" class="form-control" 
+               ng-model="item.name" 
+          
+               >
+             </div>  
+              
+        </div>
+
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-default btn-sm rounded" ng-click="cancel()"><span translate="interface.all.CANCEL"></span></button>
+    <button class="btn btn-primary btn-sm rounded" ng-click="okAddCategory(item)"><span translate="interface.all.OK"></span></button>
+</div>

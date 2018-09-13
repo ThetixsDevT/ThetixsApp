@@ -1,0 +1,19 @@
+
+<div class="modal-header no-border">
+     
+     <button class="btn btn-default btn-xs no-border rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button>
+</div>
+<div class="modal-body no-border">
+    <div class="form-group">
+            <div class="col-md-18">
+                <!-- <input  type="text" class="form-control" 
+               ng-model="item.text" 
+               > -->
+               <textarea class="form-control" rows="4" ng-model="item.text" > </textarea> 
+             </div>  
+        </div>
+</div>
+<div class="modal-footer no-border">                  
+    <!-- <button class="btn btn-default" ng-click="cancel()">Cancel</button> -->
+    <button class="btn btn-primary" ng-click="okAnswerA(item)">OK</button>
+</div>

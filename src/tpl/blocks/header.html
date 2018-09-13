@@ -1,0 +1,290 @@
+          <script type="text/ng-template" id="modalNewPartner.html">
+            <div ng-include="'tpl/modalNewPartner.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalViewPartner.html">
+            <div ng-include="'tpl/modalViewPartner.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalViewPartner2.html">
+            <div ng-include="'tpl/modalViewPartner2.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalViewVendor.html">
+            <div ng-include="'tpl/modalViewVendor.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalAddCategory.html">
+            <div ng-include="'tpl/modalAddCategory.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalCategoryListing.html">
+            <div ng-include="'tpl/modalCategoryListing.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalAddMensage.html">
+            <div ng-include="'tpl/modalAddMensage.html'"></div>
+          </script>
+            <script type="text/ng-template" id="modalProductDetail.html">
+            <div ng-include="'tpl/modalProductDetail.html'"></div>
+          </script>
+
+          
+      <!-- navbar header -->
+      <div class="navbar-header {{app.settings.navbarHeaderColor}}">
+        <button class="pull-right visible-xs dk" ui-toggle-class="show" data-target=".navbar-collapse">
+          <i class="glyphicon glyphicon-cog"></i>
+        </button>
+        <button class="pull-right visible-xs" ui-toggle-class="off-screen" data-target=".app-aside" ui-scroll-to="app">
+          <i class="glyphicon glyphicon-align-justify"></i>
+        </button>
+        <!-- brand -->
+        <a  class="navbar-brand text-lt">
+          <!-- <i class="fa fa-btc"></i> -->
+          <img src="img/logoH.png" alt="." >
+          <span class="hidden-folded m-l-xs" style="font-size:21px;">{{app.name}}</span>
+        </a>
+        <!-- / brand -->
+      </div>
+      <!-- / navbar header -->
+
+      <!-- navbar collapse -->
+      <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+        <!-- buttons -->
+        <div class="nav navbar-nav hidden-xs">
+          <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
+            <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
+          </a>
+          <a href class="btn no-shadow navbar-btn" ui-toggle-class="show" target="#aside-user">
+            <i class="icon-user fa-fw"></i>
+          </a>
+        </div>
+        <!-- / buttons -->
+
+        <!-- link and dropdown -->
+        <ul class="nav navbar-nav hidden-sm" ng-hide="{{app.level == '3' || app.level == '2'}}" >
+          <li class="dropdown pos-stc" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <i class="fa fa-gear"> </i> <span translate="interface.all.SETTINGS"> </span> 
+              <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu wrapper w-full bg-white">
+              <div class="row">
+                <div class="col-sm-4" ng-controller="ModalDemoCtrl">
+                  <div class="m-l-xs m-t-xs m-b-xs font-bold" translate="interface.all.PRODUCTS">Prod. <span class="badge badge-sm bg-success">10</span></div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled l-h-2x">
+                        <li>
+                        <i class="fa fa-fw fa-angle-right text-muted m-r-xs" ></i>
+                          <a ng-click="openAddCategory()" translate="interface.all.ADD_CATEGORY">Add</a>
+                        </li>
+                        <li>
+                        <i class="fa fa-fw fa-angle-right text-muted m-r-xs" ></i>
+                          <a ng-click="openCategoryListing()" translate="interface.all.CATEGORY_LIST">List</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+              <!--   <div class="col-sm-4 b-l b-light">
+                  <div class="m-l-xs m-t-xs m-b-sm font-bold">Analysis</div>
+                  <div class="text-center">
+                    <div class="inline">
+                      <div ui-jq="easyPieChart" ui-options="{
+                          percent: 65,
+                          lineWidth: 50,
+                          trackColor: '{{app.color.light}}',
+                          barColor: '{{app.color.info}}',
+                          scaleColor: false,
+                          size: 100,
+                          rotate: 90,
+                          lineCap: 'butt',
+                          animate: 2000
+                        }">
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </li>
+        </ul>
+        <!-- / link and dropdown -->
+
+
+
+
+
+        <!-- search form -->
+        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl" ng-hide="$state.includes('apps.products') || {{app.level == '1'}} || {{app.level == '2'}} ">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" ng-model="selected" typeahead="item as item.productName for item in tixs  | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" style="font-size:20px;" placeholder="Search Tixs...">
+              <span class="input-group-btn">
+                <button type="submit" class="btn btn-sm bg-light rounded" ng-click="selectTix(selected)"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </div>
+        </form>
+        <!-- / search form -->
+
+        <!-- nabar right -->
+        <ul class="nav navbar-nav navbar-right" ng-controller="FlotChartDemoCtrl">
+          <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              {{selectLang}} <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li ng-repeat="(langKey, label) in langs">
+                <a ng-click="setLang(langKey, $event)" href>{{label}}</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+          <li class="hidden-xs">
+            <a ui-fullscreen></a>
+          </li>
+          <li  ng-if="app.level == 3" class="dropdown" dropdown ui-refresh="app">
+           <a href class="dropdown-toggle" dropdown-toggle >
+              <i class="fa fa-shopping-cart fa-fw"  ></i>
+              <span class="visible-xs-inline" translate="interface.all.PRODUCTS_IN_CART"></span>
+              <span class="badge badge-sm up bg-danger pull-right-xs elem" ng-if="app.products > 0">{{app.products}}</span>
+            </a>
+            <!-- dropdown -->
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+                <div class="panel-heading b-light bg-light">
+                  <strong><span translate="interface.all.PRODUCTS_IN_CART"></span></strong>
+                </div>
+                <div class="list-group">
+                  <a  class="list-group-item" ng-repeat="product in app.productsList track by $index" ui-refresh="app" >
+                    <span class="clear block m-b-none" >
+                      <br>
+                      <small class="text-muted">{{product.productName}}</small>
+                      
+                       <i class="fa fa-close pull-right " style="color: red;" ng-click="borrar($index)">  </i>
+                       <small class="text-muted pull-right">$ {{product.total}} </small>
+
+                    </span>
+                  </a>
+                  <div class="row"></div>
+                  <!-- <div class="line line-dashed b-b line-lg "></div> -->
+                  <div class="row"></div>
+                </div>
+                <div class="panel-footer text-sm text-center no-border">
+          
+                      <div class="row"></div>
+                  <!--  <small class="text-muted pull-right"> {{app.subTotal}}</small>
+                   <small class="text-muted pull-right font-bold">SUB-TOTAL: $ </small>
+                      <div class="row"></div>
+                   <small class="text-muted pull-right"> {{app.shipping}}</small>
+                   <small class="text-muted pull-right font-bold">SHIPPING: $ </small>
+                      <div class="row"></div>
+                   <small class="text-muted pull-right"> {{app.tax}}</small>
+                   <small class="text-muted pull-right font-bold">TAX: $ </small>
+                      <div class="row"></div> -->
+                   <small class="text-muted pull-right"> {{app.total}}</small>
+                   <small class="text-muted pull-right font-bold">TOTAL: $ </small>
+                      <div class="row"></div>
+                      <div class="line line-dashed b-b line-lg "></div>
+                      <div class="row"></div>
+
+      <!--             <button class="btn btn-primary btn-rounded btn-sm" ng-show="app.products >= 1" translate="interface.all.VIEW_CART"></button> -->
+                  <button  ui-sref="app.preCheckout" ng-show="app.products > 0" class="btn btn-primary btn-rounded btn-sm" translate="interface.all.CHECKOUT"></button>
+                </div>
+              </div>
+            </div>
+            
+          </li>
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <i class="icon-bell fa-fw"></i>
+              <span class="visible-xs-inline">Notifications</span>
+              <!-- <span class="badge badge-sm up bg-danger pull-right-xs elem">2</span> -->
+            </a>
+            <div class="dropdown-menu w-xl animated fadeInUp">
+              <div class="panel bg-white">
+                <div class="panel-heading b-light bg-light">
+                  <strong>You have <span>0</span> notifications</strong>
+                </div>
+                <div class="list-group">
+                <!--   <a href class="list-group-item">
+                    <span class="pull-left m-r thumb-sm">
+                      <img src="img/user.png" alt="..." class="img-circle">
+                    </span>
+                    <span class="clear block m-b-none">
+                      Last login<br>
+                      <small class="text-muted">10 minutes ago</small>
+                    </span>
+                  </a> -->
+                 <!--  <a class="list-group-item">
+                    <span class="clear block m-b-none">
+                    2 New Partners <br>
+                      <small class="text-muted">1 hour ago</small>
+                    </span>
+                  </a> -->
+                </div>
+                <div class="panel-footer text-sm">
+                  <a  class="pull-right"><i class="fa fa-cog"></i></a>
+                  <a  data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                </div>
+              </div>
+            </div>
+            <!-- / dropdown -->
+          </li>
+          <li class="dropdown" dropdown>
+            <a href class="dropdown-toggle clear" dropdown-toggle>
+              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                <img src="img/user.png" alt="...">
+                <i class="on md b-white bottom"></i>
+              </span>
+              <span class="hidden-sm hidden-md">{{app.email}}</span> <b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated fadeInRight w">
+              <li>
+                  <a class="list-group-item">
+                    <span class="pull-left m-r thumb-sm">
+                      <img src="img/user.png" alt="..." class="img-circle">
+                    </span>
+                    <span class="clear block m-b-none">
+                      {{app.nameUser}}<br>
+                      <small class="text-muted" translate="interface.all.VENDOR_ACCOUNT" ng-if="app.level==3"></small>
+                      <small class="text-muted" translate="interface.all.PARTNER_ACCOUNT" ng-if="app.level==2"></small>
+                      <small class="text-muted" translate="interface.all.ADMIN_ACCOUNT" ng-if="app.level==1"></small>
+                    </span>
+                  </a>
+              </li>
+              <li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+                <div>
+
+             <!--      <p>300mb of 500mb used</p> -->
+                </div>
+                <progressbar value="100" class="progress-xs m-b-none bg-white"></progressbar>
+              </li>
+              <li>
+                <a ui-sref="app.page.appSettings" ng-if="app.level == '1'">
+                  <!-- <span class="badge bg-danger pull-right">30%</span> -->
+                  <span translate="interface.all.APP_SETTINGS">App Settings</span>
+                </a>
+              </li>
+              <li>
+                <a ui-sref="app.page.profile"><span translate="interface.all.PROFILE"></span></a>
+              </li>
+             <!--  <li>
+                <a ui-sref="app.docs">
+                  <span class="label bg-info pull-right">new</span>
+                  Help
+                </a>
+              </li> -->
+              <li class="divider"></li>
+              <li>
+                <a ui-sref="access.signin">
+                   <span class=" pull-right"><i class="fa  fa-sign-out fa-2x text-muted"></i></span>
+                <span translate="interface.all.LOGOUT"></span></a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+          </li>
+        </ul>
+        <!-- / navbar right -->
+
+      </div>
+      <!-- / navbar collapse -->

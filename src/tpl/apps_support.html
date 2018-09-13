@@ -1,0 +1,277 @@
+
+  <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        /*.app { background-color: #f0f3f4; }*/
+    </style> <!--hbox layout -->
+         <!--  <script type="text/ng-template" id="modalSalidaconsultor.html">
+            <div ng-include="'tpl/modalSalidaconsultor.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalConfirm.html">
+            <div ng-include="'tpl/modalConfirm.html'"></div>
+          </script>
+              <script type="text/ng-template" id="modalConfirmBorrarConsultor.html">
+            <div ng-include="'tpl/modalConfirmBorrarConsultor.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalConfirm2.html">
+            <div ng-include="'tpl/modalConfirm2.html'"></div>
+          </script> -->
+          <!--  <div class="">
+   </div> -->
+     <script type="text/ng-template" id="modalAnswerA.html">
+            <div ng-include="'tpl/modalAnswerA.html'"></div>
+          </script>
+  <div class="hbox hbox-auto-xs hbox-auto-sm bg-light" ng-init="
+  app.settings.asideFixed = true;
+  app.settings.container = false;
+  app.settings.asideFolded = true;
+  app.hideAside = false;
+  app.hideFooter = true;
+  app.settings.asideFolded = true;" 
+  ng-controller="SupportCtrl">
+  <div class="col w b-r" id="moreless" >
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner" ui-refresh="questions">
+            <div class="list-group no-radius no-border no-bg m-b-none" ui-refresh="questions">
+              <a ng-repeat="item in questions" ng-dblclick="editItem(item)" class="list-group-item m-l hover-anchor b-a " ng-class="{'focus m-l-none': item.selected}" ng-click="selectSupport(item)" ui-refresh="questions">   
+                <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" popover="{{item.description}}" popover-trigger="mouseenter" popover-placement="bottom">        
+                <span class="block" ng-class="{'m-n': item.selected }">{{ item.description ? item.description : 'Por definir' }}</span>
+                <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditingSupportTicket(item)" ng-model="item.description" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+   <!--    <div class="wrapper b-t">
+        <span translate="interface.support.PENDING"> </span>
+          <label class="i-switch bg-primary m-t-xs m-r">
+          <input type="radio"  value="pending" ng-model="item.checked" ng-click="check(item)">
+          <i></i>
+        </label>
+        <br/>
+        <span translate="interface.support.IN_PROCESS"> </span>
+          <label class="i-switch bg-primary m-t-xs m-r">
+          <input type="radio"  value="process" ng-model="item.checked" checked ng-click="check(item)">
+          <i></i>
+        </label>
+        <br/>
+        <span translate="interface.support.COMPLETED"> </span>
+          <label class="i-switch bg-primary m-t-xs m-r">
+          <input type="radio"  value="completed" ng-model="item.checked" ng-click="check(item)">
+          <i></i>
+        </label>         
+      </div> -->
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+     <div class="panel panel-default" ng-show="supportDetail.description">
+                   
+        <div class="panel-heading">  
+          <button class="btn btn-sm btn-default" ui-toggle-class="hide" target="#moreless">
+          <i class="fa fa-dedent text"></i>
+          <span class="text"></span>
+          <i class="fa fa-indent text-active"></i>
+          <span class="text-active"></span>
+          </button>                  
+          <i class="fa  fa-bank  text-muted"></i>
+           {{supportDetail.description}}
+        </div>
+         <div class="clearfix text-center m-t">
+          <div class="col-sm-12 pull-right" >
+            <div class="inline pull-right" style="background-color: white; padding: 10px; border-radius: 10px; box-shadow:5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+              <div class="item avatar2" >
+                <div class="pos-rlt">
+                  <div class="item-overlay bg-black-opacity"  >
+                   <div class="center text-center m-t-n w-full">
+                    <a><i class="fa fa-2x fa-eye text-white"></i></a>
+                   </div>
+                  </div>
+                 <a  ><img src="{{supportDetail.product.images[0]}}" alt="" class="img-full"></a>
+                </div>
+              </div>
+              <span  style="font-weight: bold;"><h3><b>{{supportDetail.product.productName}}</b></h3></span>
+              <small class="text-muted m-b">   
+             <!--  <table class="table table-striped m-b-none" ng-show="supportDetail" ui-refresh="supportDetail">
+                <thead>
+                  <tr>
+                    <th style="width:60px;" class="text-center" ></th>
+                    <th class="text-center" style="width:60px;" translate="interface.products.PRICE"></th> 
+                    <th style="width:70px;" class="text-center" translate="interface.products.COMMISSION"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-if="item" ui-refresh="item" ng-repeat="item in supportDetail.product.itemsPrices">                    
+                    <td class="text-center">
+                    {{item.label}}
+                    </td>
+                    <td class="text-center">{{item.price}}</td>
+                    <td class="text-success text-center" ng-if="item.checked == 'percentage'">
+                      {{item.price*item.commissionP/100}} $ ({{item.commissionP}} %)
+                    </td>
+                     <td class="text-success text-center" ng-if="item.checked == 'fixed'" >
+                      {{item.commissionF}} $ 
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table> -->
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body" ui-jq="slimScroll" ui-options="{height:'250px', size:'8px'}">
+          <div class="line pull-in"></div>
+
+          <div class="media">
+            <div class="m-b">
+               <a href class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="...">
+               </a>
+            
+            <div class="m-l-xxl">
+              <div class="pos-rlt wrapper b b-light r r-2x">
+                <span class="arrow left pull-up"></span>
+                <p class="m-b-none">{{supportDetail.description}}</p>
+              </div>
+              <small class="text-muted"><i class="fa fa-check text-success"></i> {{supportDetail.createdAt|date}}</small>
+            </div>
+          </div>
+          </div>
+          <div class="line pull-in"></div>
+          <div class="media">
+           
+          </div>
+        </div>
+
+
+       
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col bg-white-only" ng-show="lateral">
+    <div class="vbox" ng-show="supportDetail.description" ui-refresh="supportDetail">
+      <div class="wrapper-sm b-b" >
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <a class="btn btn-default btn-xs" ui-toggle-class="timeline-center" target=".timeline">
+          <span class="text">
+            <i class="fa fa-arrows-h text-success"></i> 
+          </span>
+          <span class="text-active">
+            <i class="fa fa-long-arrow-left text-info"></i> 
+          </span>
+          </a>
+           <button class="btn btn-rounded btn-sm btn-icon btn-success pull-right" ng-click="openAnswer(supportDetail)"><i class="fa fa-comment"></i></button>
+        </div>
+      </div>
+      <div class="row-row lter">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="wrapper-md lter">
+              
+              <div class="hbox h-auto m-b-lg"  ui-refresh="items">
+                <ul class="timeline" >
+                  <li class="tl-header">
+                    <div class="btn btn-info">
+                      <span translate="interface.support.NOW"></span>
+                    </div>
+                  </li>
+                  <div ng-repeat="item in items" class="" >
+                    <li class="tl-item tl-right" ng-show="item.autor=='partner'">
+                    <div class="tl-wrap b-primary">
+                      <span class="tl-date">{{item.createdAt|date}}</span>
+                      <div class="tl-content panel padder b-a block">
+                        <span class="arrow left pull-up hidden-left"></span>
+                        <span class="arrow right pull-up visible-left"></span>
+                        <div class="text-lt m-b-sm">
+                          <a href class="avatar thumb-xs m-r-xs">
+                          <img src="img/aa2.jpg" alt="...">
+                          <i class="on b-white left"></i>
+                          </a>
+                          <span class="text font-bold text-info">
+                          Partner</span>
+                        </div>
+                        <div class="panel-body pull-in b-t b-light">
+                          <p>{{item.description}} </p>
+                          <div class="m-b m-t">                   
+                            <span class="h5 m-l-sm"></span>              
+                          </div>
+                        </div>             
+                      </div>
+                    </div>
+                    </li>
+                     <li class="tl-item tl-right" ng-show="item.autor=='admin'">
+                    <div class="tl-wrap b-primary">
+                      <span class="tl-date">{{item.createdAt|date}}</span>
+                      <div class="tl-content panel padder b-a block">
+                        <span class="arrow left pull-up hidden-left"></span>
+                        <span class="arrow right pull-up visible-left"></span>
+                        <div class="text-lt m-b-sm">
+                          <a href class="avatar thumb-xs m-r-xs">
+                          <img src="img/avatar.png" alt="...">
+                          <i class="on b-white left"></i>
+                          </a>
+                            <span class="text font-bold text-primary">Administrator</span>
+                        </div>
+                        <div class="panel-body pull-in b-t b-light">
+                          <p>{{item.description}} </p>
+                          <div class="m-b m-t">                   
+                            <span class="h5 m-l-sm"></span>              
+                          </div>
+                        </div>             
+                      </div>
+                    </div>
+                    </li>
+                    <li class="tl-item tl-left" ng-show="item.autor=='vendor'">
+                    <div class="tl-wrap b-primary">
+                      <span class="tl-date">{{item.createdAt|date}}</span>
+                      <div class="tl-content panel padder b-a block">
+                        <span class="arrow left pull-up hidden-left"></span>
+                        <span class="arrow right pull-up viloadSupportTicketssible-left"></span>
+                        <div class="text-lt m-b-sm">
+                          <a href class="avatar thumb-xs m-r-xs">
+                          <img src="img/a2.jpg" alt="...">
+                          <!-- <i class="glyph-icon flaticon-group icon"></i> -->
+                          <i class="on b-white left"></i>
+                          </a>
+                          <span class="">
+                          Affiliate</span>
+                        </div>
+                        <div class="panel-body pull-in b-t b-light">
+                          <p>{{item.description}} </p>
+                          <div class="m-b m-t">                  
+                            <span class="h5 m-l-sm"></span>              
+                          </div>
+                        </div>             
+                      </div>
+                    </div>
+                    </li>
+                  </div>
+                  <li class="tl-header">
+                    <div class="btn btn-sm btn-default btn-rounded">Fin</div>
+                  </li>
+                </ul>
+              </div>
+              <div  class="m-b-md" ng-hide="!item" ui-refresh="alerts">
+              <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+
+<!-- /hbox layout

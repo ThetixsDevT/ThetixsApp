@@ -1,0 +1,191 @@
+ <div class=" wrapper-md">
+  <h1 class="m-n font-thin h3" ><i class="glyph-icon flaticon-sell-product icon " ></i> <spam class="m-n font-thin h3" translate="interface.partners.NEW_PARTNER">Nuevo Proveedor</spam>
+  <span ng-controller="ModalDemoCtrl" class="pull-right">
+      <button class="btn btn-primary btn-rounded " ng-click="partners()"><I class="fa fa-list"></I></button>
+    </spam></h1>
+</div>
+<div class="wrapper-md">
+ <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">  
+    <tab active="steps.step1" select="steps.percent=10">
+     <tab-heading >
+        <div class="panel-heading font-bold"  translate="interface.partners.COMPANY_INFO" ">Company Info </div>
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+           <form name="step1" class="form-horizontal form-validation">
+           
+
+ 
+     
+    <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.LOGO"></label>
+      <div class="col-sm-7">
+       <input type="file" nv-file-select="" uploader="uploader" />
+      <table class="table bg-white-only b-a">
+          <thead>
+              <tr>
+                  <th width="50%"><span translate="interface.fileUpload.NAME"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.SIZE"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.PROGRESS"></span></th>
+                  <th><span translate="interface.fileUpload.STATUS"></span></th>
+                  <th><span translate="interface.fileUpload.ACTIONS"></span></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in uploader.queue">
+                  <td><strong>{{ item.file.name }}</strong></td>
+                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                  <td ng-show="uploader.isHTML5">
+                      <div class="progress progress-sm m-b-none m-t-xs">
+                          <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </td>
+                  <td class="text-center">
+                      <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                  </td>
+                  <td nowrap>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                          <span translate="interface.fileUpload.UPLOAD"></span>
+                      </button>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                          <span translate="interface.fileUpload.CANCEL"></span>
+                      </button>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                          <span translate="interface.fileUpload.REMOVE"></span>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      </div>
+    </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.COMPANY_NAME">Company Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" ng-model="item.companyName" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ADDRESS">Address</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.address" required >                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.COMPANY_PHONE">Company Phone:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.phone" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.EMAIL">Email:</label>
+              <div class="col-sm-4">
+                <input type="email" placeholder="Email" class="form-control rounded" ng-model="item.email" required>         
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.WEB">Website</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.url" required >                       
+              </div>
+            </div>           
+            </form>
+            <div class="m-t m-b col-offset-7">
+              <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.partners.NEXT">Next</button>
+            </div>
+    </tab>
+    <tab   disabled="step1.$invalid" active="steps.step2" select="steps.percent=40">
+      <tab-heading  >
+      
+        <div class="panel-heading font-bold"  translate="interface.partners.COMPANY_REP_INFO" ">Company Info </div>
+        </tab-heading>
+  
+        <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+          <form name="step2" class="form-horizontal form-validation">
+           <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_NAME">Rep Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.repName" required >                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_PHONE">Rep phone</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.repPhone" required>                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_EMAIL">Rep Email</label>
+              <div class="col-sm-4">
+               <input type="email" placeholder="Email" class="form-control rounded" ng-model="item.repEmail" required> 
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_TITTLE">Rep Tittle</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.repTittle" >                       
+              </div>
+            </div>
+          </form>
+           <div class="m-t m-b">
+          <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step1=true"  translate="interface.partners.PREV">Prev</button>
+           <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step3=true" translate="interface.partners.NEXT">Next</button>
+         
+        </div>
+    </tab>
+    <tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=60">
+       <tab-heading >
+
+        <div class="panel-heading font-bold"  translate="interface.partners.FINANCIAL_REP_INFO">Company Rep Info </div>
+        
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+     <form name="step3" class="form-horizontal form-validation">
+        <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.FINANCIAL_REP">Financial Rep</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.repFinancialName" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.FINANCIAL_REP_EMAIL">Rep Financial Email:</label>
+              <div class="col-sm-4">
+               <input type="email" placeholder="Email" class="form-control rounded" ng-model="item.repFinancialEmail" required> 
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.BANK_NAME">Bank Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.bankName" required>                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ACCOUNT_TYPE">Account Type</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.accountType" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ACCOUNT">Account</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="item.account" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ROUTING">Routing</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="item.routing" required >                       
+              </div>
+            </div>
+            <div class="m-t m-b">
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.partners.PREV">Prev</button>
+        <button type="button" class="btn btn-default btn-rounded" ng-click="saveNewPartner(item)" translate="interface.partners.FINISH">Click me to Finish</button>
+      </div>
+          </form>
+
+     
+    </tab>
+  </tabset>
+</div>

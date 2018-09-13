@@ -1,0 +1,142 @@
+<div class="modal-body wrapper-lg">
+ <div class=" wrapper-md">
+  <h1 class="m-n font-thin h3" ><i class="glyph-icon flaticon-sell-product icon " ></i> <spam class="m-n font-thin h3" translate="interface.partners.NEW_PARTNER">Nuevo Proveedor</spam></h1>
+</div>
+<div class="wrapper-md">
+  <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">  
+    <tab active="steps.step1" select="steps.percent=10">
+     <tab-heading >
+        <div class="panel-heading font-bold"  translate="interface.partners.COMPANY_INFO" ">Company Info </div>
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+           <form name="step1" class="form-horizontal form-validation">
+           <div class="row">
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.COMPANY_NAME">Company Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" ng-model="partner.companyName" required ng-change="step1.email.$valid ? (steps.percent=30) : (steps.percent=20">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ADDRESS">Address</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.address" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.COMPANY_PHONE">Company Phone:</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.phone" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.EMAIL">Email:</label>
+              <div class="col-sm-4">
+                <input type="email" placeholder="Email" class="form-control rounded" ng-model="partner.email" required>         
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.WEB">Website</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.url" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+             <div class="m-t m-b">
+              <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.partners.NEXT">Next</button>
+            </div>
+            </div>
+            </form>
+    </tab>
+    <tab   disabled="step1.$invalid" active="steps.step2" select="steps.percent=40">
+      <tab-heading  >
+      
+        <div class="panel-heading font-bold"  translate="interface.partners.COMPANY_REP_INFO" ">Company Info </div>
+        </tab-heading>
+  
+        <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+          <form name="step2" class="form-horizontal form-validation">
+           <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_NAME">Rep Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.repName" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_PHONE">Rep phone</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.repPhone" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_EMAIL">Rep Email</label>
+              <div class="col-sm-4">
+               <input type="email" placeholder="Email" class="form-control rounded" ng-model="partner.repEmail" required> 
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.REP_TITTLE">Rep Tittle</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.repTittle" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+          </form>
+           <div class="m-t m-b">
+          <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step1=true"  translate="interface.partners.PREV">Prev</button>
+          <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step3=true" translate="interface.partners.NEXT">Next</button>
+        </div>
+    </tab>
+    <tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=60">
+       <tab-heading >
+
+        <div class="panel-heading font-bold"  translate="interface.partners.FINANCIAL_REP_INFO">Company Rep Info </div>
+        
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+     <form name="step3" class="form-horizontal form-validation">
+        <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.FINANCIAL_REP">Financial Rep</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.repFinancialName" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.FINANCIAL_REP_EMAIL">Rep Financial Email:</label>
+              <div class="col-sm-4">
+               <input type="email" placeholder="Email" class="form-control rounded" ng-model="partner.repFinancialEmail" required> 
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.BANK_NAME">Bank Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.bankName" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ACCOUNT_TYPE">Account Type</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="partner.accountType" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ACCOUNT">Account</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="partner.account" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.partners.ROUTING">Routing</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="partner.routing" required ng-change="step1.email.$valid ? (steps.percent=20) : (steps.percent=30">                       
+              </div>
+            </div>
+            <div class="m-t m-b">
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.partners.PREV">Prev</button>
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.percent=100" translate="interface.partners.FINISH">Click me to Finish</button>
+      </div>
+          </form>
+
+     
+    </tab>
+  </tabset>
+</div>
+</div>

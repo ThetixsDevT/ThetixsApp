@@ -1,0 +1,161 @@
+
+
+<div class="bg-light lter b-b wrapper-md" >
+  <h1 class="m-n font-thin h3" translate="interface.all.CHECKOUT"></h1>
+</div>
+<div class="wrapper-md"  >
+  <div class="row">
+<!--   <div class="col-sm-3">
+
+     <div  class="pull-right" style="font-size: 80px; font-weight: 20px; padding-top: 150px;"> $ {{app.total}}</div>
+  </div> -->
+    <div class="col-sm-offset-1 col-sm-10" ng-show="app.visor">
+      <div class="">
+        <div class="panel-heading font-bold" translate="interface.all.CONFIRM_PAYMENT"><i class="fa fa-credit-card fa-3x"></i></div>
+        <div class="panel-body">
+          <div class="no-boot"  ng-cloak>
+          SANDOBOX
+            <div id="successNotification" ng-show="isPaymentSuccess">
+              Card Charged Succesfully!!
+            </div>
+            <div class="col-sm-2">
+                <div  class="pull-right" style="font-size: 50px; font-weight: 20px; padding-top: 150px;"> $ {{app.total}}</div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-8">
+            <form novalidate id="payment-form" ng-hide="isPaymentSuccess"  ng-controller="PaymentSandBoxController">
+              <div id="card-errors" ng-repeat="error in card_errors">
+                <li>{{error.message}}</li>
+              </div>
+              <p></p>
+              
+              <!-- Numero de transaccion: {{data.transactionId}} -->
+              <div class="row">
+                   <div class="col-sm-7">
+                     
+                           <div class="form-group ">
+                          <!-- <label>Card Number</label> -->
+                          <img src="img/nm.png">
+                          <input type="text" class="form-control rounded" placeholder="" ng-model="item.nm" style="box-shadow:5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                        </div>
+
+                    </div>
+              
+             </div>
+              <div class="row">
+                   <div class="col-sm-7">
+                     
+                           <div class="form-group ">
+                          <!-- <label>Card Number</label> -->
+                          <img src="img/cn.png">
+                          <input type="text" class="form-control rounded" placeholder="" ng-model="item.cn" style="box-shadow:5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                        </div>
+
+                    </div>
+              
+             </div>
+            <div class="row">
+             <div class="col-sm-8">
+              <img src="img/t.png">
+                 
+                    <select ng-model="item.t">
+                      <option value="visa">Visa</option>
+                      <option value="mastercard">Master Card</option>
+                      <option value="American Express">American Express</option>
+                      <option value="discover">Discover</option>
+                    </select>
+                 </div>
+            </div>
+ 
+
+          
+
+             <!--  <div>
+                <label>Card Number</label>
+                <div ng-model="data.card.card_number"  id="sq-card-number"></div>
+              </div>
+ -->
+             <div class="row">
+               <div class="form-group col-sm-3">
+              <!-- <label>CVV</label> --><br/>
+                  <img src="img/vc.png">
+                  <input type="text" class="form-control rounded" placeholder=""  ng-model="item.vc" style="box-shadow:5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+               </div>
+            </div>
+
+
+         <!--      <div>
+                <label>CVV</label>
+                <div ng-model="data.card.cvv"  id="sq-cvv"></div>
+              </div> -->
+<div class="row">
+<div class="form-group">
+  <img src="img/de.png">
+</div>
+  <div class="form-group col-sm-3">
+
+              <!-- <label>Expiration Date</label> -->
+              
+              <div class="col-sm-6">
+                <select ng-model="item.me">
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12" selected>12</option>
+        </select>
+              </div>
+  </div>
+  <div class="form-group col-sm-3">
+                 <select ng-model="item.ye">
+            <option value="18">2018</option>
+            <option value="19">2019</option>
+            <option value="20">2020</option>
+            <option value="21">2021</option>
+            <option value="22">2022</option>
+            <option value="23">2023</option>
+            <option value="24">2024</option>
+            <option value="25">2025</option>
+            <option value="26">2026</option>
+            <option value="27">2027</option>
+            <option value="28">2028</option>
+        </select>
+  </div>
+
+         
+</div>
+
+
+            <!--   <div>
+                <label>Expiration Date</label>
+                <div ng-model="data.card.expiration_date"  id="sq-expiration-date"></div>
+              </div> -->
+
+   <!--            <div>
+                <label>Postal Code</label>
+                <div ng-model="data.card.postal_code"  id="sq-postal-code"></div>
+              </div> -->
+
+              <div>
+                <input ng-click="payment(item)" ng-disabled="isProcessing" type="submit" id="submit" value="Pay now" class="btn btn-warning  btn-rounded btn-lg">
+              </div>
+
+            </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

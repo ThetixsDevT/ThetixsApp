@@ -1,0 +1,107 @@
+
+<div class="lter wrapper-md no-border" style="background-color: #fff;">
+ <button class="btn btn-lg btn-success btn-rounded pull-right" ng-click="downloadQuotation(app)"> <i class="glyphicon glyphicon-print"></i></button>
+</div>
+<div class="wrapper-md bg-white no-border"  id="rosterPrintView" ui-refresh="app">
+    <div>
+    <div class="row">
+    <div class="col-sm-7"><a  class="navbar-brand text-lt" >
+           <img src="img/logo.png" alt="." style="min-height: 120px;" >
+          <span class="m-l-xs" style="font-size: 25px;">The|Tixs</span>
+        </a>
+        </br>
+        <img src="img/email.png" style="min-height: 16px;"> <span class="label text-dark" style="font-size: 18px;">info@thetixs.com</span><br>
+    <img src="img/phone.png" style="min-height: 16px;"> <span class="label text-dark" style="font-size: 18px;">+1 833 THETIXS (843 8497)</span><br>
+        <br> </div>
+    <div class="col-sm-5"> 
+      <a  class="navbar-brand text-lt" >
+           <img src="{{app.partnerToPrint.images[0]}}" alt="." style="min-height: 120px;" >
+      
+        </a><br/>
+    <span class="label text-dark bg-light" style="font-size: 14px;">Partner Information:</span></br>         
+         Name: <strong>{{app.partnerToPrint.companyName}}</strong>
+         </br>
+         Phone: <strong>{{app.partnerToPrint.phone}}</strong>
+         </br>
+         Address: <strong>{{app.partnerToPrint.address}}</strong></div>
+</div>
+
+
+        </br>
+         <span class="label text-dark bg-light" style="font-size: 14px;">Tixs #</span><br>
+         <span style="font-size: 20px;"><strong>{{app.idTixToPrint}}</strong></span>
+        </br>
+          <span class="label text-dark bg-light"  style="font-size: 14px;">Date:</span><br>
+          <strong>{{app.datePrint | date: 'dd-MM-yyyy'}}</strong></br>
+        <!-- Reservation Time &amp; Date: <strong>02/02/2018</strong><br> -->
+        </br>
+         <span class="label text-dark bg-light"  style="font-size: 14px;">Customer Information:</span><br>
+         Customer Name: <strong>{{app.customerName}}</strong></br>
+       <!--    Date: <strong>02/02/2018</strong> -->
+         </br>
+      <!--    Number of tixs: <strong> Adult /  Child</strong> -->
+         </br>
+         </br>
+         <span class="label text-dark bg-light" style="font-size: 14px;">Tix Information:</span></br>
+           <b>{{app.TixToPrint.productName}}</b>
+         <br/>
+         {{app.TixToPrint.description}}
+         <br/>
+
+
+
+           </p>
+    <div class="line"></div>
+    <table class="table table-striped bg-white b-a">
+      <thead>
+        <tr>
+          <th style="width: 60px">QTY</th>
+          <th>DESCRIPTION</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="line in app.productToPrint">
+          <td class="no-border">{{line.quantity}}</td>
+          <td class="no-border">{{line.label}}</td>
+       
+        </tr>
+        
+       <!--  <tr>
+          <td colspan="3" class="text-right no-border"><strong>Subtotal</strong></td>
+          <td class="no-border">$1607.00</td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-right no-border"><strong>Total</strong></td>
+          <td class="no-border"><strong>$1607.00</strong></td>
+        </tr> -->
+      </tbody>
+    </table>  
+      
+        </br>
+         <span class="label text-dark bg-light" style="font-size: 14px;">Aditional Information:</span></br>
+         {{app.notesTixsToPrint}}
+         <br/>
+         <br/>
+         <span class="label  text-dark bg-light" style="font-size: 14px;">Terms of Sale:</span><br>
+         This voucher is only valid for redemption by the person(s) name above. It is not transferable,
+has no cash value, and can only be redeemed once. It may not be redeemed after 30 days from
+
+the date of purchase. theTixs.com will not refund any unused or partially used attractions and
+services. theTixs.com is not liable for any loss, injury, damage or delay to any person or any
+property connected with the use of this voucher.            
+  </div>
+  <br/><br/><br/><br/><br/>
+  <div class="row">
+  <div class="col-sm-6" style="padding-left: 90px;">
+      <img src="{{app.imagesTixToPrint[0]}}" alt="." style="max-height: 400px;max-width: 400px;" >
+  </div>
+  <div class="col-sm-6">
+    <img src="{{app.imagesTixToPrint[1]}}" alt="." style="max-height: 400px; max-width: 400px;" >
+  </div>
+</div>
+</div>
+
+
+
+

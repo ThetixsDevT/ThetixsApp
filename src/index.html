@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+<!-- <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script> -->
+  <meta charset="utf-8" />
+  <title>Thetixs App: Online Booking Software System for Tour & Activity Operators</title>
+  <meta name="description" content="Platform Thetixs" />
+  <meta name="keywords" content="Platform Thetixs" width="device-width, initial-scale=1, maximum-scale=1" />
+
+<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+<link rel="manifest" href="img/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="libs/assets/animate.css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="libs/assets/font-awesome/css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="libs/assets/simple-line-icons/css/simple-line-icons.css" type="text/css" />
+  <link rel="stylesheet" href="libs/jquery/bootstrap/dist/css/bootstrap.css" type="text/css" />
+
+<link href="//cdn.rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.min.css" rel="stylesheet">
+  
+  <!-- build:css css/app.min.css -->
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+   <link rel="stylesheet" href="css/flaticon.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />
+  
+ 
+
+
+
+  
+  <!-- endbuild -->
+</head>
+<body ng-controller="AppCtrl">
+  <div class="app" id="app" ng-class="{'app-header-fixed':app.settings.headerFixed, 'app-aside-fixed':app.settings.asideFixed, 'app-aside-folded':app.settings.asideFolded, 'app-aside-dock':app.settings.asideDock, 'container':app.settings.container}" ui-view></div>
+
+<!-- build:js js/app.angular.js -->
+  <!-- jQuery -->
+  <script src="libs/jquery/jquery/dist/jquery.js"></script>
+  <!-- Bootstrap -->
+  <script src="libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+  <!-- Angular -->
+  <script src="libs/angular/angular/angular.js"></script>
+  <script src="libs/angular/angular-animate/angular-animate.js"></script>
+  <script src="libs/angular/angular-aria/angular-aria.js"></script>
+  <script src="libs/angular/angular-cookies/angular-cookies.js"></script>
+  <script src="libs/angular/angular-messages/angular-messages.js"></script>
+  <script src="libs/angular/angular-resource/angular-resource.js"></script>
+  <script src="libs/angular/angular-sanitize/angular-sanitize.js"></script>
+  <script src="libs/angular/angular-touch/angular-touch.js"></script>
+  <script src="libs/angular/angular-ui-router/release/angular-ui-router.js"></script> 
+  <script src="libs/angular/ngstorage/ngStorage.js"></script>
+  <script src="libs/angular/angular-ui-utils/ui-utils.js"></script>
+
+  <!-- bootstrap -->
+  <script src="libs/angular/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <!-- lazyload -->
+  <script src="libs/angular/oclazyload/dist/ocLazyLoad.js"></script>
+  <!-- translate -->
+  <script src="libs/angular/angular-translate/angular-translate.js"></script>
+  <script src="libs/angular/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+  <script src="libs/angular/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+  <script src="libs/angular/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+
+  <!-- App -->
+  <script src="js/app.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/config.lazyload.js"></script>
+  <script src="js/config.router.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/services/ui-load.js"></script>
+  <script src="js/filters/fromNow.js"></script>
+  <script src="js/directives/setnganimate.js"></script>
+  <script src="js/directives/ui-butterbar.js"></script>
+  <script src="js/directives/ui-focus.js"></script>
+  <script src="js/directives/ui-fullscreen.js"></script>
+  <script src="js/directives/ui-jq.js"></script>
+  <script src="js/directives/ui-module.js"></script>
+  <script src="js/directives/ui-nav.js"></script>
+  <script src="js/directives/ui-scroll.js"></script>
+  <script src="js/directives/ui-shift.js"></script>
+  <script src="js/directives/ui-toggleclass.js"></script>
+  <script src="js/controllers/bootstrap.js"></script>
+  <script src="libs/pdfmaker/html2canvas.min.js"></script>
+  <script src="libs/pdfmaker/pdfmake.min.js"></script>
+      <script type="text/javascript" src="libs/MultipleDatePicker/docs/javascripts/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="libs/MultipleDatePicker/docs/javascripts/moment-timezone.js"></script>
+<script type="text/javascript" src="libs/MultipleDatePicker/docs/javascripts/multipleDatePicker.min.js"></script>
+
+<!--   <script src='libs/pdfmaker/pdfmake.min.js'></script>
+  <script src='libs/pdfmaker/vfs_fonts.js'></script> -->
+<!-- <script type="text/javascript" src="https://js.squareup.com/v2/paymentform"></script> -->
+
+
+<!-- endbuild -->
+  <!-- Lazy loading -->
+</body>
+</html>

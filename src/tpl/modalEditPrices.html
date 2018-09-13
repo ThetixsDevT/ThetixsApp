@@ -1,0 +1,134 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{item.productName}}  <button class="btn btn-default rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button></h3>
+     
+</div>
+<div class="modal-body animated fadeInUp" >
+    <div class="row">
+     <div class="wrapper-md" >
+                <div class=" pull-right" ng-show="tableform.$visible">
+                	  <a  class="btn  btn-xs btn-success rounded pull-right"  ng-click="addItemPrice() " ><i  class="fa fa-plus"></i> <span translate="interface.products.PRICE"></span>
+                	  </a>
+                </div> 
+                <p></p>
+                <br/>
+              <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
+                <!-- table -->
+
+
+                
+                <table class="table table-bordered table-hover table-condensed bg-white-only">
+                  <tr style="font-weight: bold">
+                    <td style="width:20%"><span translate="interface.products.TYPE_PRICE"></span></td>
+                    <td style="width:10%"><span translate="interface.products.PRICE"></span></td>
+                     <td style="width:10%"><span translate="interface.products.PRICE_NET"></span></td>
+                     <td style="width:10%"><span translate="interface.products.GANANCY"></span></td>
+                    <td style="width:40%"><span translate="interface.products.TYPE_COMMISSION"></span></td>
+                    <td style="width:10%"><span ><span translate="interface.products.COMMISSION"></span></span></td>
+                       <td style="width:10%" ng-show="tableform.$visible"><span ></span></td>
+                  </tr>
+                  <tr ng-repeat="item in item.itemsPrices | filter:filterPrice">
+                    <td>
+                      <!-- editable username (text with validation) -->
+                      <span editable-text="item.label" class="" e-form="tableform" onbeforesave="checkName($data, user.id)">
+                        {{ item.label || 'empty' }}
+                      </span>
+                    </td>
+                    <td>
+                      <!-- editable status (select-local) -->
+                      <span editable-text="item.price" e-form="tableform" >
+                       $ {{ item.price | number:2 }}
+                      </span>
+                    </td>
+
+                      <td>
+                      <!-- editable status (select-local) -->
+                      <span editable-text="item.netPrice" e-form="tableform" >
+                       $ {{ item.netPrice | number:2  }}
+                      </span>
+                    </td>
+                     <td> <span class="text-info">$ {{item.price - item.netPrice | number:2 }}</span></td>
+
+
+
+
+                  <!--   <td>
+                  
+                      <span editable-select="item.typeCommission" e-form="tableform"  e-ng-options="g.value as g.text for g in typesCommission">
+                        <span  ng-show="item.checked == 'fixed'" translate="interface.products.FIXED_AMOUNT"></span>
+                      <span ng-show="item.checked == 'percentage'" translate="interface.products.PERCENTAGE"></span>
+                      </span>
+                    </td> -->
+                   <!--  <td ng-if="item.commissionF">
+                
+                      <span editable-number="item.commissionF" min="0" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+                        {{ item.commissionF || 'empty'  }}
+                      </span>
+                    </td>
+
+                    <td ng-if="item.commissionP">
+          
+                      <span editable-number="item.commissionP" min="0" max="100" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+                        {{ item.commissionP || 'empty'  }}
+                      </span>
+                    </td>
+					 -->
+
+					 <td>
+					 	 <div class="col-sm-12">
+                    		<span translate="interface.products.FIXED_AMOUNT"> </span>
+	                        <label class="i-switch bg-primary m-t-xs m-r">
+	                        <input type="radio"  value="fixed" ng-model="item.checked" checked>
+	                        <i></i>
+	                     	</label>
+
+                     		<span translate="interface.products.PERCENTAGE"></span>
+                      		<label class="i-switch bg-primary m-t-xs m-r">
+                        	<input type="radio"  value="percentage" ng-model="item.checked">
+                        	<i></i>
+                      		</label>
+        				</div>
+					</td>
+					<td>
+						<div  ng-show="item.checked == 'fixed'">
+		                  <input type="number"  class="form-control rounded" min="0" max="{{item.price - item.netPrice}}"  ng-model="item.commissionF">
+		                </div>
+		                <div  ng-show="item.checked == 'percentage'">
+		                  <input type="number"  class="form-control rounded"  min="0" max="100" placeholder="%" ng-model="item.commissionP">
+		                </div>
+					</td>
+
+                    <!-- <td><button type="button" ng-show="tableform.$visible" ng-click="removePrice($index)" class="btn btn-sm rounded btn-danger pull-right"><i class="fa fa-trash"></i></button></td> -->
+                  </tr>
+                </table>
+
+                <!-- buttons -->
+                <div >
+                  <button type="button" class="btn btn-success btn-sm rounded pull-right" ng-show="!tableform.$visible" ng-click="saveChanges(item)">
+                    <span translate="interface.products.SAVE_CHANGES"></span>
+                  </button>
+                </div>
+                <div class="btn-edit">
+             <!--      <button type="button" class="btn btn-default btn-sm rounded pull-right" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+                    <span translate="interface.products.EDIT"></span>
+                  </button> -->
+                </div>
+                
+                <div class="btn-form pull-right" ng-show="tableform.$visible">
+
+                	 
+
+                  <!-- <button type="button" ng-disabled="tableform.$waiting" ng-click="addItemPrice()" class="btn btn-default rounded pull-right">add row</button> -->
+                  <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-success rounded">
+                  	 <span translate="interface.products.ACEPT"></span>
+                  </button>
+                  <!-- <button type="button" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="btn btn-default">cancel</button> -->
+                </div> 
+                
+              </form>
+            </div>
+
+</div>
+<!-- <div class="modal-footer">                  
+  
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div> -->

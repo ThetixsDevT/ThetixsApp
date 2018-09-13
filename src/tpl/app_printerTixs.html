@@ -1,0 +1,50 @@
+
+
+<div class="bg-light lter b-b wrapper-md" >
+  <h1 class="m-n font-thin h3" translate="interface.all.FINISH">!</h1>
+</div>
+<div class="wrapper-md"  >
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6" >
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold" translate="interface.all.PRINT_TIXS"></div>
+        <div class="panel-body">
+          <div class="no-boot"  >
+            <form novalidate>
+              <p></p>
+              <div  class="text-mute" style="font-size: 20px; font-weight: 20px;">
+                <img src="img/printTixs.png">
+               
+              </div>
+              <div class="panel-body">
+                <div class="panel bg-white">
+                  <div class="list-group">
+                    <a  class="list-group-item" ng-click="printTix(product)" ng-repeat="product in app.listTixs track by $index" ui-refresh="app"  >
+                      <span class="clear block m-b-none" >
+                        <br>
+                          <small class="text-muted"><b>{{product.productName}}</b></small>
+                          <small class="text-muted pull-right"><b>$ {{product.total}}</b> </small>
+                          <small  class="text-muted">
+                            <span style="padding-left: 20px;" ng-repeat="line in product.tixInformation">
+                              <br/>
+                              <span class="col-sm-offset-1  col-sm-5">
+                                {{line.line}} 
+                              </span>  
+                            </span>
+                          </small>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

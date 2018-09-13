@@ -1,0 +1,53 @@
+
+<div class="modal-body no-border">
+  <h3 class="modal-title"> <button class="btn btn-default rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button>
+   <h2 class="modal-title">{{item.productName}}</h2> 
+   <br></br>  
+   </h3>    
+    <div class="row">
+    <div class="col-md-12">
+     <!--  <div class="col-md-12">
+         <h3 class="modal-title">{{item.productName}}</h3>   
+      </div> -->
+      <div class="col-md-6">
+      
+        <div class="item m-l-n-xxs m-r-n-xxs">
+          <div ng-init="x = 3" class="top text-right padder m-t-xs w-full">
+            <rating ng-model="x" max="5" state-on="'fa fa-star text-white'" state-off="'fa fa-star-o text-white'"></rating>
+          </div>
+      
+         <carousel interval="myInterval">
+          <slide ng-repeat="slide in item.images" >
+            <img ng-src="{{slide}}" class="img-full" style="border-radius:26px;">
+       
+            
+          </slide>
+        </carousel>
+       
+      </div>
+    </div>
+   
+     <div class="col-md-12">
+     <br></br>
+      <span class="text-lt pull" >{{item.description}}</span>
+      <br><br/>
+      <div class="col-md-12" ng-controller="AccordionDemoCtrl" ng-show="item.notes">
+        <accordion close-others="oneAtATime">
+          <accordion-group is-open="status.open" class="b-info">
+              <accordion-heading>
+                  <i class="fa fa-exclamation-triangle text-info" popover="{{item.notes}}" popover-trigger="mouseenter" popover-placement="top"></i> <span translate="interface.products.NOTES" class="text-info"></span>
+
+                   <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.open, 'fa-angle-right': !status.open}"></i>
+              </accordion-heading>
+             <span class="text-info">{{item.notes}}</span>
+          </accordion-group>
+        </accordion>
+    
+      </div>
+    </div>
+    </div>
+</div>
+<!-- <div class="modal-footer">                  
+  
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+</div> -->

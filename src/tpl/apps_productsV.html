@@ -1,0 +1,79 @@
+
+  <script type="text/ng-template" id="modalProductDetail.html">
+            <div ng-include="'tpl/modalProductDetail.html'"></div>
+          </script>
+
+  <script type="text/ng-template" id="modalSetPrices.html">
+            <div ng-include="'tpl/modalSetPrices.html'"></div>
+          </script>
+<div class="wrapper-md" ng-show="!categorys" ui-refresh="categorys" ng-controller="ProductsVCtrl" style="padding: 252px 0px 0px 540px;">
+      <!-- stats -->
+  <div class="text-center">
+     <i class="fa fa-spin fa-spinner fa-2x "></i> Loading ...
+  </div>      
+</div>
+
+          
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="ProductsVCtrl" ng-init="
+    app.settings.asideFolded = true; 
+      app.settings.container = false;
+    app.settings.asideDock = false;
+    app.hideFooter = true;
+  " ng-hide="!categorys">
+  <!-- left col -->
+  <div class="col w bg-light dker bg-auto"> 
+  <div class="vbox">  
+   <div class="row-row"> 
+    <div class="cell scrollable hover">
+          <div class="cell-inner" ui-refresh="categorys">
+            <div class="list-group no-radius no-border no-bg m-b-none" ui-refresh="categorys">
+              <a class="list-group-item b-b" ng-dblclick="selectCategory({name:''})" ng-class="{'focus': (filter == '')}" ng-click="carga()"><span translate="interface.products.ALLF"></span><span  tooltip-placement="bottom"   class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="fa fa-refresh"></i></span></a>
+              <a ng-repeat="item in categorys | orderBy:'name'" class="list-group-item m-l hover-anchor b-a " ng-class="{'focus m-l-none': item.selected}" ng-click="selectCategory(item)" ui-refresh="categorys">                  
+              <span class="block" ng-class="{'m-n': item.selected }">{{ item.name ? item.name : 'Por definir' }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+    <!-- left col end-->
+    <!-- right col -->
+    <div class="col ">
+        <div class="vbox">
+     <!--  <div class="wrapper-sm b-l">
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <h3 class=""><span translate="aside.nav.PRODUCTS"></span></h3> 
+        </div>
+      </div> -->
+      <div class="row-row">
+      <div class="cell">
+          <div class="cell-inner">
+        <div class="col-sm-4 " ng-click="openModalProductDetail(item)"  ng-repeat="item in productsFil" ui-refresh="productsFil" style="height: 350px; min-height: 330px; border-radius: 20px; margin-top: 20px;">
+     
+          <div  class="product" style="margin: 10px; border-radius: 20px;  height: 350px;  ">
+          <div  style="padding: 20px 20px 0px 20px; border-radius: 10px;"  >
+            
+           
+            <div class="item" style="width: 200px; height: 240px;" >
+
+            <a ng-if="item" ><img src="{{item.images[0]}}" alt="" class="img-full" style="border-radius: 10px;width: 240px; height: 240px;">
+            </a>
+            </div>
+          </div>
+          <div class="wrapper  m-b">
+            <a  class="text-ellipsis">{{item.productName}}</a>
+             <!--  <span class="badge bg-info m-l-sm m-t-sm" ng-repeat="element in item.category track by $index" ng-show="isArray(item.category)">{{element}}</span>
+             <span class="badge bg-info m-l-sm m-t-sm" ng-show="!isArray(item.category)">{{item.category}}</span> -->
+          </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  <!-- right col end-->
+  </div>
+</div>

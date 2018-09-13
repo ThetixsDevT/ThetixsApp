@@ -1,0 +1,43 @@
+{
+  "name": "angular-multiple-date-picker",
+  "version": "2.1.6",
+  "authors": [
+    "mgohin <mgohin@arca-computing.fr>"
+  ],
+  "description": "Angular directive to show a calendar and select multiple dates",
+  "main": [
+    "dist/multipleDatePicker.js",
+    "dist/multipleDatePicker.css"
+  ],
+  "keywords": [
+    "angular",
+    "directive",
+    "calendar",
+    "picker",
+    "date",
+    "multiple"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.X.X",
+    "moment": "^2.X.X"
+  },
+  "homepage": "https://github.com/arca-computing/MultipleDatePicker",
+  "_release": "2.1.6",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.6",
+    "commit": "ea19262c096dc9dd7ffbf0d32cdef728fb7844f3"
+  },
+  "_source": "https://github.com/arca-computing/MultipleDatePicker.git",
+  "_target": "^2.1.6",
+  "_originalSource": "multiple-date-picker",
+  "_direct": true
+}

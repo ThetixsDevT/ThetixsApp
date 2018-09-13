@@ -1,0 +1,74 @@
+<div class="modal-over bg-white">
+ <!--  <div class="modal-center animated fadeInUp text-center" style="width:320px;margin:-180px 0 0 -160px;">
+    <div class="">
+      <img src="img/logoT.png" class="">
+    </div>
+    <p class="h4 m-t m-b" translate="interface.all.GENERATOR"></p>
+    <div class="input-group">
+      <input type="text" class="form-control text-sm btn-rounded no-border" placeholder="Serial Tix">
+      <span class="input-group-btn">
+        <a href="#/" class="btn btn-success btn-rounded no-border"><i class="fa fa-arrow-right"></i></a>
+      </span>
+    </div>
+  </div> -->
+  <div class="panel-body" ng-controller="PrinterTixsCtrl">
+         <!--  <div class="panel bg-white">
+
+            <div class="list-group">
+            {{sale.transacionId}}
+              <a  class="list-group-item" ng-repeat="product in sale.productList track by $index">
+                <span class="clear block m-b-none" >
+                  <br>
+                    <small class="text-muted"><b>{{product.productName}}</b></small>
+                    <small class="text-muted pull-right"><b>$ {{product.total}}</b> </small>
+                    <small  class="text-muted">
+                      <span style="padding-left: 20px;" ng-repeat="line in product.tixInformation">
+                        <br/>
+                        <span class="col-sm-offset-1  col-sm-4">
+                          {{line.line}} 
+                        </span>  
+                      </span>
+                    </small>
+                </span>
+              </a>
+            </div>
+          </div> -->
+          <div class="panel panel-default">
+        <div class="panel-heading font-bold" translate="interface.all.PRINT_TIXS"></div>
+        <div class="panel-body">
+          <div class="col-md-offset-2 col-md-8"  >
+            <form novalidate>
+              <p></p>
+              <div  class="text-mute" style="font-size: 20px; font-weight: 20px;">
+                <img src="img/printTixs.png">
+               
+              </div>
+              <div class="panel-body">
+                <div class="panel bg-white">
+                  <div class="list-group">
+                    <a  class="list-group-item" ng-click="printTix(product)" ng-repeat="product in sale.productList track by $index" ui-refresh="app"  >
+                      <span class="clear block m-b-none" >
+                        <br>
+                          <small class="text-muted"><b>{{product.productName}}</b></small>
+                          <small class="text-muted pull-right"><b>$ {{product.total}}</b> </small>
+                          <small  class="text-muted">
+                            <span style="padding-left: 20px;" ng-repeat="line in product.tixInformation">
+                              <br/>
+                              <span class="col-sm-offset-1  col-sm-5">
+                                {{line.line}} 
+                              </span>  
+                            </span>
+                          </small>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+        </div>
+</div>

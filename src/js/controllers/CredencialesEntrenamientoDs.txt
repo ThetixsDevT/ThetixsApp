@@ -1,0 +1,26 @@
+dsTraining
+xLuuEwtLNV5CB7PR
+
+
+###################   DEMO DEL TEMA   ###################
+http://fitness.dttheme.com/
+
+###################   DOCUMENTACION DEL TEMA   ###################
+http://support.wedesignthemes.com/article-categories/fitness-zone-wordpress-theme/
+
+###################   INSTALACION DE WORDPRESS   ###################
+http://sohigh.com.ve/entrenamientoDs
+
+###################   ADMINISTRACION DE WORDPRESS   ###################
+http://sohigh.com.ve/entrenamientoDs/wp-admin
+
+###################   CREDENCIALES WORDPRESS   ###################
+USER: entrenamientoDs
+PASSWORD: p5KXfmrSFWjSe3ES
+
+###################   CREDENCIALES PHPMYADMIN   ###################
+http://sohigh.com.ve/phpmyadmin
+USER: entrenamientoDs
+PASSWORD: p5KXfmrSFWjSe3ES
+
+

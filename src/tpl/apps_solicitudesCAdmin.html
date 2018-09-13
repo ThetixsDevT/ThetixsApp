@@ -1,0 +1,225 @@
+
+  <style>
+        /* This helps the ng-show/ng-hide animations start at the right place. */
+        /* Since Angular has this but needs to load, this gives us the class early. */
+        .app { background-color: #f0f3f4; }
+    </style> <!--hbox layout -->
+          <script type="text/ng-template" id="modalMensaje.html">
+            <div ng-include="'tpl/modalMensaje.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalConfirm.html">
+            <div ng-include="'tpl/modalConfirm.html'"></div>
+          </script>
+              <script type="text/ng-template" id="modalConfirmBorrarConsultor.html">
+            <div ng-include="'tpl/modalConfirmBorrarConsultor.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalConfirm2.html">
+            <div ng-include="'tpl/modalConfirm2.html'"></div>
+          </script>
+          <script type="text/ng-template" id="modalNuevaSolicitud.html">
+  <div ng-include="'tpl/modalNuevaSolicitud.html'"></div>
+</script>
+           <div class="">
+   </div>
+  <div class="hbox2 hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.container = false;
+  app.settings.asideFolded = true;
+  app.hideAside = false;
+  app.hideFooter = true;
+  app.settings.asideFolded = true;" 
+  ng-controller="SolicitudesAdminCtrl">
+  <div class="col w b-r" id="moreless" >
+    <div class="vbox">
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner" ui-refresh="solicitudes">
+            <div class="list-group no-radius no-border no-bg m-b-none" ui-refresh="solicitudes">
+           
+              <a ng-repeat="item in solicitudes" ng-dblclick="editItem(item)" class="list-group-item m-l hover-anchor b-a " ng-class="{'focus m-l-none': item.selected}" ng-click="selectSolicitud(item)" ui-refresh="solicitudes">   
+           
+                <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" popover="{{item.titulo}}" popover-trigger="mouseenter" popover-placement="bottom">               
+                <span class="block" ng-class="{'m-n': item.selected }">{{ item.titulo ? item.titulo : 'Por definir' }}</span>
+                <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditingSolicitud(item)" ng-model="item.titulo" style="top:3px;left:2px;width:98%" ui-focus="item.editing">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t">
+       <div class="radio">
+              <label class="i-checks">
+                <input type="radio" name="a" value="option2" ng-click="consultarPendientes(item)">
+                <i></i>
+                Pendientes
+              </label>
+            </div>
+            <div class="radio">
+              <label class="i-checks">
+                <input type="radio" name="a" value="option2" checked ng-click="consultarEnProceso(item)">
+                <i></i>
+                En proceso
+              </label>
+            </div>
+            <div class="radio">
+              <label class="i-checks">
+                <input type="radio" name="a" value="option2" ng-click="consultarFinalizadas(item)">
+                <i></i>
+                Finalizadas
+              </label>
+            </div>
+            
+       
+          
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- column -->
+  <div class="col w-lg2 lter b-r">
+    <div class="vbox">
+     <div class="panel panel-default" ng-show="detallesSolicitud.titulo">
+                   
+        <div class="panel-heading">  
+             <button class="btn btn-sm btn-default" ui-toggle-class="hide" target="#moreless">
+          <i class="fa fa-dedent text"></i>
+          <span class="text"></span>
+          <i class="fa fa-indent text-active"></i>
+          <span class="text-active"></span>
+        </button>                  
+         <i class="fa  fa-bank  text-muted"></i>
+
+
+
+           {{detallesSolicitud.titulo}}
+        </div>
+        <div class="panel-body" ui-jq="slimScroll" ui-options="{height:'250px', size:'8px'}">
+         
+          <div class="line pull-in"></div>
+          <div class="media">
+  
+               <div class="m-b">
+               <a href class="pull-left thumb-sm avatar"><img src="img/a2.jpg" alt="...">
+               </a>
+            
+            <div class="m-l-xxl">
+              <div class="pos-rlt wrapper b b-light r r-2x">
+                <span class="arrow left pull-up"></span>
+                <p class="m-b-none">{{detallesSolicitud.descripcion}}</p>
+              </div>
+              <small class="text-muted"><i class="fa fa-ok text-success"></i> {{detallesSolicitud.createdAt|date}}</small>
+            </div>
+          </div>
+          </div>
+          <div class="line pull-in"></div>
+          <div class="media">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col bg-white-only" ng-show="lateral">
+    <div class="vbox" ng-show="detallesSolicitud.titulo" ui-refresh="detallesSolicitud">
+      <div class="wrapper-sm b-b" >
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <a class="btn btn-default btn-xs" ui-toggle-class="timeline-center" target=".timeline">
+          <span class="text">
+            <i class="fa fa-arrows-h text-success"></i> 
+          </span>
+          <span class="text-active">
+            <i class="fa  fa-long-arrow-left text-info"></i> 
+          </span>
+        </a>
+         <button class="btn btn-rounded btn-sm btn-icon btn-success pull-right" ng-click="openMensaje(item)"><i class="fa fa-comment"></i></button>
+        </div>
+      </div>
+      <div class="row-row lter">
+        <div class="cell">
+          <div class="cell-inner">
+            <div class="wrapper-md lter">
+            
+              <div class="hbox2 h-auto m-b-lg">
+               
+<ul class="timeline" >
+ <li class="tl-header">
+          <div class="btn btn-info">Ahora</div>
+        </li>
+        <div ng-repeat="item in items" ui-refresh="items">
+
+
+         <li class="tl-item tl-right" ng-show="item.autor=='soportista'">
+          <div class="tl-wrap b-primary">
+            <span class="tl-date">{{item.createdAt|date}}</span>
+            <div class="tl-content panel padder b-a block">
+              <span class="arrow left pull-up hidden-left"></span>
+              <span class="arrow right pull-up visible-left"></span>
+              <div class="text-lt m-b-sm">
+              <a href class="avatar thumb-xs m-r-xs">
+                    <img src="img/avatar.png" alt="...">
+                    <i class="on b-white left"></i>
+                  </a>
+              {{item.autor}}</div>
+              <div class="panel-body pull-in b-t b-light">
+                <p>{{item.mensaje}} </p>
+                <div class="m-b m-t">                  
+              
+                  <span class="h5 m-l-sm"></span>              
+                </div>
+              
+              </div>             
+            </div>
+          </div>
+        </li>
+        <li class="tl-item tl-left" ng-show="item.autor=='cliente'">
+          <div class="tl-wrap b-primary">
+            <span class="tl-date">{{item.createdAt|date}}</span>
+            <div class="tl-content panel padder b-a block">
+              <span class="arrow left pull-up hidden-left"></span>
+              <span class="arrow right pull-up visible-left"></span>
+              <div class="text-lt m-b-sm">
+              <a href class="avatar thumb-xs m-r-xs">
+                    <img src="img/a2.jpg" alt="...">
+                    <i class="on b-white left"></i>
+                  </a>
+              {{item.autor}}</div>
+              <div class="panel-body pull-in b-t b-light">
+                <p>{{item.mensaje}} </p>
+                <div class="m-b m-t">                  
+              
+                  <span class="h5 m-l-sm"></span>              
+                </div>
+              
+              </div>             
+            </div>
+          </div>
+        </li>
+
+        </div>
+      
+        <li class="tl-header">
+          <div class="btn btn-sm btn-default btn-rounded">Fin</div>
+        </li>
+      </ul>
+              
+                
+                
+              </div>
+              <div  class="m-b-md" ng-hide="!item" ui-refresh="alerts">
+              <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>
+ 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+
+<!-- /hbox layout

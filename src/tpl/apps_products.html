@@ -1,0 +1,281 @@
+
+  <style>
+       
+    </style> <!--hbox layout -->
+     
+              <script type="text/ng-template" id="modalDoneDeleteProduct.html">
+            <div ng-include="'tpl/modalDoneDeleteProduct.html'"></div>
+          </script>
+      
+           <script type="text/ng-template" id="modalViews.html">
+            <div ng-include="'tpl/modalViews.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalInfo.html">
+            <div ng-include="'tpl/modalInfo.html'"></div>
+          </script>
+           <script type="text/ng-template" id="modalEditPrices.html">
+            <div ng-include="'tpl/modalEditPrices.html'"></div>
+          </script>
+           <div class="">
+   </div>
+  <div class="hbox hbox-auto-xs hbox-auto-sm bg-light " ng-init="
+  app.settings.asideFixed = true;
+  app.settings.container = false;
+  app.settings.asideFolded = true;
+  app.hideAside = false;
+  app.hideFooter = true;
+  app.settings.asideFolded = true;" 
+  ng-controller="ProductsCtrl">
+
+  <!-- column -->
+  <div class="col w b-r">
+    <div class="vbox">
+      <div class="row-row ">
+        <div class="cell scrollable hover">
+          <div class="cell-inner" ui-refresh="categorys">
+            <div class="list-group no-radius no-border no-bg m-b-none" ui-refresh="categorys">
+              <a class="list-group-item b-b" ng-click="selectCategory({name:''})" ng-class="{'focus': (filter == '')}" ><span translate="interface.products.ALLF"></span><span  tooltip-placement="bottom"   class="pull-right text-muted inline wrapper-xs m-r-sm"><i class="icon icon-refresh"></i></span></a>
+              <a ng-repeat="item in categorys | orderBy:'name'" class="list-group-item m-l hover-anchor b-a " ng-class="{'focus m-l-none': item.selected}" ng-click="selectCategory(item)" ui-refresh="categorys">   
+            
+                <!-- <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" >  -->
+                <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" popover="{{item.name}}" popover-trigger="mouseenter" popover-placement="bottom">               
+                <span class="block" ng-class="{'m-n': item.selected }">{{ item.name ? item.name : 'Por definir' }}</span>
+                <input type="text" class="form-control pos-abt" ng-show="item.editing" ng-blur="doneEditingCategory(item)" ng-model="item.name" style="top:3px;left:2px;width:98%" >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t">
+    
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+  <!-- column -->
+  <div class="col w-lg lter b-r">
+    <div class="vbox">
+      <div class="wrapper-xs b-b">
+        <div class="input-group m-b-xxs">
+          <span class="input-group-addon input-sm no-border no-bg"><i class="icon-magnifier text-md m-t-xxs"></i></span>
+          <input type="text" class="form-control input-sm no-border no-bg text-md" placeholder="{{category.name ? category.name : 'All Products'}}" ng-model="query">  
+        </div>
+      </div>
+      <div class="row-row">
+        <div class="cell scrollable hover">
+          <div class="cell-inner">
+            <div class="m-t-n-xxs">
+              <div class="list-group list-group-lg no-radius no-border no-bg m-b-none">
+                <a ng-repeat="item in items | filter:{category:filter} | filter:query | orderBy:'productName'" class="list-group-item m-l" ng-class="{'select m-l-none': item.selected }" ng-click="selectItem(item)">
+                  <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" >
+                   <!-- <span class="block text-ellipsis m-l-n text-md" ng-class="{'m-l-none': item.selected }" popover="{{item.description}}" popover-trigger="mouseenter" popover-placement="bottom"> -->
+                    {{ item.productName }} <strong></strong>
+                    <span ng-hide="item.productName ">sin name</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="text-center pos-abt w-full" style="top:50%;" ng-hide="(items | filter:{category:filter} | filter:query).length">Vacío</div>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper b-t text-center" >
+      
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+
+  <!-- column -->
+  <div class="col ">
+    <div class="vbox">
+      <div class="wrapper-sm b-b">
+       <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <div class="m-t-n-xxs m-b-n-xxs m-l-xs">
+          <a  class="btn btn-lg  btn-default pull-right rounded" ng-hide="!item" ng-click="openDoneDeleteProduct(item)"><i tooltip="Delete Product" tooltip-placement="left" class="fa fa-trash"></i></a>
+          <a class="btn btn-lg btn-default rounded" ng-hide="item.editing || !item" ng-click="editItem(item)">
+          <!-- <span translate="interface.products.EDIT"></span> -->
+          <i class="fa fa-edit"></i>
+          </a>
+          <a class="btn btn-lg btn-success rounded" ng-show="item.editing" ng-click="doneEditingProduct(item)">
+          <!-- <span translate="interface.products.SAVE_CHANGES"></span> -->
+          <i class="fa fa-save"></i>
+          </a>
+          <button type="button" class="btn btn-default btn-lg rounded no-border"  ng-hide="item.editing || !item" ng-click="openEditPrices(item)">
+                   <i class="fa fa-edit"></i>
+                   <span translate="interface.products.PRICES"></span>
+                  </button>
+        </div>
+       <!--  <div class="btn-edit" ng-show="item">
+                  
+                </div> -->
+      </div>
+      <div class="row-row">
+        <div class="cell">
+          <div class="cell-inner">
+              
+
+
+
+             <div class="col-lg-8"  ng-show="item.productName && !item.editing" >
+      <div class="">
+        <div class="">
+          <div class="clearfix text-center m-t">
+                <div class="col-sm-12 pull-right" style="padding-top: 30px;">
+
+            <div class="inline pull-right" style="background-color: white; padding: 10px; border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                <div class="item avatar2" ng-click="openViews(item)">
+          <div class="pos-rlt">
+                 <div class="item-overlay bg-black-opacity"  ng-hide="item.editing || !item.productName">
+              <div class="center text-center m-t-n w-full">
+                <a><i class="fa fa-2x fa-eye text-white"></i></a>
+              </div>
+            </div>
+            <a  ><img src="{{item.images[0]}}" alt="" class="img-full" ng-if="item.productName"></a>
+</div></div>
+             
+
+              <!-- <div class="h4 m-t m-b-xs">John.Smith</div> -->
+                            <span  style="font-weight: bold;"><h3><b>{{item.productName}}</b></h3></span>
+              <small class="text-muted m-b">
+                
+                 
+              <table class="table table-striped m-b-none" ng-show="item" ui-refresh="item">
+                <thead>
+                  <tr>
+                    <th style="width:60px;" class="text-center" translate="interface.products.TYPE_PRICE"></th>
+                    <th class="text-center" style="width:70px;" translate="interface.products.PRICE"></th> 
+                    <th class="text-center" style="width:60px;" translate="interface.products.PRICE_NET "></th> 
+                   <!--  <th style="width:70px;" class="text-center" translate="interface.products.TYPE_COMMISSION"></th>  --> 
+                    <th style="width:70px;" class="text-center" translate="interface.products.COMMISSION"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-if="item" ui-refresh="item" ng-repeat="item in item.itemsPrices">                    
+                    <td class="text-center">
+                    {{item.label}}
+                    </td>
+                    <td class="text-center">$ {{item.price}}</td>
+                    <td class="text-center">$ {{item.netPrice}}</td>
+                  
+                    <td class="text-info text-center" ng-if="item.checked == 'percentage'">
+                      $ {{item.price*item.commissionP/100}}  ({{item.commissionP}} %)
+                    </td>
+                     <td class="text-info text-center" ng-if="item.checked == 'fixed'" >
+                     $ {{item.commissionF}}  
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+             
+              </small>
+
+            </div>
+                                
+          </div>
+        </div>
+        <footer class="panel-footer bg-info text-center no-padder">
+ 
+
+        </footer>
+      </div>
+    </div>
+
+
+
+
+            </div>
+            <div class="col-lg-2 text-center"  ng-show="item.productName && !item.editing" style="padding-top: 90px;" >
+                     <div  ng-show="item.selected && !item.editing" >
+                    <a class="btn btn-rounded  "   ng-click="openViews(item)"
+                     > 
+                     <i class="fa fa-picture-o fa-2x" ></i>
+                      <!-- <i class="icon icon-info  block m-b-xs fa-1x"></i> -->
+                    </a>
+                  </div> 
+                   <div  ng-show="item.selected && !item.editing" >
+                    <a class="btn btn-rounded  "   ng-click="openInfo(item)"
+                     > 
+                     <i class=" fa fa-info fa-2x" ></i>
+                      <!-- <i class="icon icon-info  block m-b-xs fa-1x"></i> -->
+                    </a>
+
+                  </div> 
+                 
+                </div>
+            
+
+           
+
+            <div class="wrapper-md" ng-show="item.editing">
+              <form name="form1" class="form-horizontal form-validation" ng-show="item.editing">
+                <div class="form-group" ng-show="item.editing">
+                  <label class="col-sm-3 control-label"  translate="interface.products.PRODUCT_NAME"></label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control rounded" ng-model="item.productName" required >
+                  </div>
+                </div>
+
+                <div class="form-group"  >
+                  <div class="col-sm-3 control-label" >
+                        <span translate="interface.products.CATEGORY"></span>      
+                  </div>  
+
+
+
+
+
+                  <div class="col-sm-9">
+                  {{$item.category}} 
+                  <ui-select multiple ng-model="item.category" theme="bootstrap" ng-disabled="disabled">
+                    <ui-select-match placeholder="Category...">{{$item.name}} </ui-select-match>
+                    <ui-select-choices group-by="someGroupFn" repeat="item.name as item in categorys | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="item.name | highlight: $select.search"></div>
+                 
+                    </ui-select-choices>
+                  </ui-select>
+                    <!-- <ui-select ng-model="item.category" theme="bootstrap" >
+                          <ui-select-match >{{$select.selected.name}}</ui-select-match>
+                          <ui-select-choices group-by="'name'" repeat="item.name as item in categorys | filter: $select.search">
+                            <span ng-bind-html="item.name | highlight: $select.search"></span>
+                          </ui-select-choices>
+                    </ui-select> -->
+                  </div>
+                </div>
+
+             
+
+                <div class="form-group" >
+                  <label class="col-sm-3 control-label"  translate="interface.products.DESCRIPTION"></label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" rows="12" ng-model="item.description"> </textarea>                      
+                  </div>
+                </div>
+                <div class="form-group" >
+                  <label class="col-sm-3 control-label"  translate="interface.products.NOTES"></label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" rows="5" ng-model="item.notes"> </textarea>                      
+                  </div>
+                </div>
+              </form>
+            </div>
+
+       
+
+           
+             
+
+              <div  class="m-b-md" ng-hide="!item" ui-refresh="alerts">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+   
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /column -->
+</div>
+

@@ -1,0 +1,103 @@
+<div class="modal-header no-border">
+  <button class="btn btn-default rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button>
+    <!-- <img src="img/logoHeader.png" class="pull-right"> -->
+    <h3 class="modal-title"><i class="fa fa-plus"> </i><i class="glyph-icon flaticon-group icon"></i></h3>
+
+</div>
+<div class="modal-body" un-refresh="item">
+    <form class="form-horizontal" method="get">
+   		<div class="row">
+
+      <div class="col-sm-6">
+           <label class="col-sm-4 control-label "> <b><span translate="interface.vendors.FULLNAME"></span>: </b></label>
+          <div class="col-sm-8 form-control-static">
+            {{item.fullName}}                     
+          </div>
+       
+    
+          <label class="col-sm-4 control-label"> <b><span translate="interface.vendors.EMAIL"></span>: </b></label>
+          <div class="col-sm-8 form-control-static">
+          <span>{{item.email}}</span>
+          </div>
+     
+         
+          <label class="col-sm-4 control-label"> <b><span translate="interface.vendors.PHONE"></span>: </b></label>
+          <div class="col-sm-8 form-control-static">
+          <span>{{item.phone}}</span>
+          </div>
+       
+        
+          <label class="col-sm-4 control-label"> <b><span translate="interface.vendors.EMAIL"></span>: </b></label>
+          <div class="col-sm-8 form-control-static">
+          <span>{{item.email}}</span>
+          </div>
+      </div>
+      <div class="col-sm-6">       
+
+             <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.BANK_NAME"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.bankName}}</span>
+            </div>
+
+                  
+
+             <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.ACCOUNT_TYPE"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.accountType}}</span>
+            </div>
+
+           <div></div>
+
+            <label class="col-sm-6  control-label"> <b><span translate="interface.vendors.ACCOUNT"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.account}}</span>
+            </div>
+
+             <label class="col-sm-6  control-label"> <b><span translate="interface.vendors.ROUTING"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.routing}}</span>
+            </div>
+
+      </div>
+   </div>
+        <div class="line line-dashed b-b line-lg "></div>
+          <div class="row">
+        <div class="col-sm-6">
+          <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.COMPANY"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.company.name}}</span>
+          </div>
+       
+        
+          <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.JOB_TITTLE"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.jobTittle}}</span>
+          </div>
+       
+        
+          <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.COMPANY_ADDRESS"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.companyAddress}}</span>
+          </div>
+        </div>
+          <div class="col-sm-6">
+             <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.WORK_PHONE"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.workPhone}}</span>
+            </div>
+
+             <label class="col-sm-6 control-label"> <b><span translate="interface.vendors.WORK_EMAIL"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.workEmail}}</span>
+            </div> 
+
+          </div>
+
+        
+          
+          
+          
+		</div>
+    </form>
+</div>
+

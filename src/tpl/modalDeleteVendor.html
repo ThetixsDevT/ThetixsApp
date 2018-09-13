@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title"> <i class="glyphicon glyphicon-trash" ></i> <span translate="interface.vendors.DELETE_VENDOR"></span></h3>
+</div>
+<div class="modal-body">
+ 
+      <div class="row" >
+        <div class="form-group">
+          <div class="col-sm-12">
+            <span translate="interface.vendors.TEXT_DELETE_VENDOR"></span>
+            {{item.name}}
+          </div>  
+        </div>
+      </div>
+</div>
+<div class="modal-footer">                  
+     <button class="btn btn-default btn-rounded" id="no" ng-click="cancel()"><span translate="interface.vendors.NO"></span></button>  
+       <button class="btn btn-danger btn-rounded" ng-click="okDoneDeleteVendor(item)"><span translate="interface.vendors.YES"></span></button>
+</div>

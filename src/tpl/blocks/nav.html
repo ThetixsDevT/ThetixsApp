@@ -1,0 +1,393 @@
+<!-- list -->
+<ul class="nav" ng-show="{{app.level == '1'}}" >
+  <!-- <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">Navigation</span>
+  </li> -->
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto"   ui-sref="app.welcome">      
+      <i class="glyph-icon flaticon-homepage icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.DASHBOARD">Dashboard</span>
+    </a>
+  </li>
+   <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      
+      <i class="glyph-icon flaticon-sell-product icon "></i>
+      <span class="font-bold" style="font-size: 14px;"translate="aside.nav.PARTNERS">Partners</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.PARTNERS">Partners</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.newPartner">
+          <span  translate="aside.nav.partners_op.NEW" >New Partner</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.partners">
+          <!-- <b class="label bg-info pull-right">N</b> -->
+          <span  translate="aside.nav.partners_op.LIST">List</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-group icon"></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.VENDORS">Vendors</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.VENDORS">Vendors</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.newVendor">
+          <span  translate="aside.nav.vendors_op.NEW" >New vendor</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.vendors">
+          <!-- <b class="label bg-info pull-right">N</b> -->
+          <span  translate="aside.nav.vendors_op.LIST">List</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+   <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-shopping-basket icon"></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.PRODUCTS_PARTNER">Products</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a >
+          <span translate="aside.nav.PRODUCTS_PARTNER">Products</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.newProduct">
+          <span translate="interface.products.NEW_PRODUCT">New product</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="apps.products">
+          <span translate="interface.products.ALL">All</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-financial-bars-stats icon " ></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.FINANCES">Finances</span>
+    </a>
+  </li>
+
+
+
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-call-center-worker-with-headset icon "></i>
+      <span class="font-bold" translate="aside.nav.QUESTIONS"></span>
+    </a>
+     <ul class="nav nav-sub dk">
+       <li ui-sref-active="active">
+        <a ui-sref="apps.support">
+          <span translate="interface.support.ALL">All</span>
+        </a>
+  </li>
+    </ul>
+  </li>
+  
+
+
+
+ 
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Partner's menu -->
+<ul class="nav animated fadeInLeft" ng-show="{{app.level == '2'}}">
+ <!--  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">Navigation</span>
+  </li> -->
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto"  ui-sref="app.welcome">          
+      <i class="glyph-icon flaticon-homepage icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.DASHBOARD">Dashboard</span>
+    </a>
+  </li>
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-shopping-basket icon"></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.PRODUCTS_PARTNER">Products</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a >
+          <span translate="aside.nav.PRODUCTS">Products</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.newProductP">
+          <span translate="interface.products.NEW_PRODUCT">New product</span>
+        </a>
+      </li>
+     
+      <li ui-sref-active="active">
+        <a ui-sref="apps.productsP">
+          <span translate="aside.nav.partners_op.MY_PRODUCTS"></span>
+
+        </a>
+      </li>
+       <li ui-sref-active="active">
+        <a ui-sref="app.commission">
+          <span translate="interface.products.COMMISSIONS"></span>
+        </a>
+      </li>
+    </ul>
+  </li>
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-financial-bars-stats icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.FINANCES">Finances</span>
+    </a>
+    <ul class="nav nav-sub dk">
+     <!--  <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.FINANCES">Finances</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v1">
+          <span>Dashboard v1</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v2">
+          <b class="label bg-info pull-right">N</b>
+          <span>Dashboard v2</span>
+        </a>
+      </li> -->
+    </ul>
+  </li>
+  <li ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-call-center-worker-with-headset icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.QUESTIONS"></span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.QUESTIONS"></span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="apps.supportP">
+          <span translate="aside.nav.QUESTIONS"></span>
+        </a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!-- end Partner's menu -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Vendor's menu -->
+
+<ul class="nav" ng-show="{{app.level == '3'}}">
+ <!--  <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+    <span translate="aside.nav.HEADER">Navigation</span>
+  </li> -->
+  <li class="iconP" ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto"  ui-sref="app.welcome">      
+    
+      <i class="glyph-icon flaticon-homepage icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.DASHBOARD">Dashboard</span>
+    </a>
+   
+  </li>
+
+
+
+   <li class="iconP" ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-shopping-basket icon"></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.PRODUCTS">Products</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.PRODUCTS">Products</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="apps.productsV">
+          <span translate="interface.products.ALL">All</span>
+        </a>
+      </li>
+      <!-- <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v2">
+          <b class="label bg-info pull-right">N</b>
+          <span>Dashboard v2</span>
+        </a>
+      </li> -->
+    </ul>
+  </li>                          
+
+ 
+  <li class="iconP" ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded" >
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-rounded-shop-cart icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.SALES">Sales</span>
+    </a>
+    <ul class="nav nav-sub dk">
+        <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.SALES">Sales</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.salesV">
+          <span translate="interface.products.ALL">All</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="iconP" ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-financial-bars-stats icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.FINANCES" >Finances</span>
+    </a>
+    <ul class="nav nav-sub dk">
+        <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.FINANCES">Finances</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.invoicesV">
+          <span translate="interface.finances.INVOICES">Invoices</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  
+  <li class="iconP" ng-style="{ 'padding-top' : (app.settings.asideFolded === 'false') ? '14px' : '14px' }" ui-refres="app.settings.asideFolded">
+    <a href class="auto">      
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="glyph-icon flaticon-call-center-worker-with-headset icon "></i>
+      <span class="font-bold" style="font-size: 14px;" translate="aside.nav.SUPPORT_TICKETS">Support</span>
+    </a>
+    <ul class="nav nav-sub dk">
+      <li class="nav-sub-header">
+        <a href>
+          <span translate="aside.nav.SUPPORT_TICKETS">Support</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="apps.supportV">
+           <span translate="aside.nav.support_tickets_op.MY_SUPPORTS_TICKETS"></span>
+        </a>
+      </li>
+     <!--  <li ui-sref-active="active">
+        <a ui-sref="app.dashboard-v2">
+          <b class="label bg-info pull-right">N</b>
+          <span>Dashboard v2</span>
+        </a>
+      </li> -->
+    </ul>
+  </li>
+
+</ul>
+<!-- end Vendor's menu -->
+
+<!-- / list -->

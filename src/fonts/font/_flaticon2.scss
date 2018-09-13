@@ -1,0 +1,67 @@
+    /*
+    flaticon2 icon font: flaticon2
+    Creation date: 31/08/2017 19:15
+    */
+
+    @font-face {
+  font-family: "flaticon2";
+  src: url("./flaticon2.eot");
+  src: url("./flaticon2.eot?#iefix") format("embedded-opentype"),
+       url("./flaticon2.woff") format("woff"),
+       url("./flaticon2.ttf") format("truetype"),
+       url("./flaticon2.svg#flaticon2") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "flaticon2";
+    src: url("./flaticon2.svg#flaticon2") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "flaticon2";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon2-rounded-shop-cart2 :before { content: "\f100"; }
+.flaticon2-bar-chart:before { content: "\f101"; }
+.flaticon2-support:before { content: "\f102"; }
+.flaticon2-group:before { content: "\f103"; }
+.flaticon2-call-center-worker-with-headset:before { content: "\f104"; }
+.flaticon2-badge:before { content: "\f105"; }
+.flaticon2-trolley:before { content: "\f106"; }
+.flaticon2-technology:before { content: "\f107"; }
+.flaticon2-shopping-basket-1:before { content: "\f108"; }
+.flaticon2-home:before { content: "\f109"; }
+.flaticon2-sell-product:before { content: "\f10a"; }
+.flaticon2-financial-bars-stats:before { content: "\f10b"; }
+.flaticon2-homepage:before { content: "\f10c"; }
+.flaticon2-shopping-basket:before { content: "\f10d"; }
+    
+    $font-flaticon2-rounded-shop-cart2 : "\f100";
+    $font-flaticon2-bar-chart: "\f101";
+    $font-flaticon2-support: "\f102";
+    $font-flaticon2-group: "\f103";
+    $font-flaticon2-call-center-worker-with-headset: "\f104";
+    $font-flaticon2-badge: "\f105";
+    $font-flaticon2-trolley: "\f106";
+    $font-flaticon2-technology: "\f107";
+    $font-flaticon2-shopping-basket-1: "\f108";
+    $font-flaticon2-home: "\f109";
+    $font-flaticon2-sell-product: "\f10a";
+    $font-flaticon2-financial-bars-stats: "\f10b";
+    $font-flaticon2-homepage: "\f10c";
+    $font-flaticon2-shopping-basket: "\f10d";

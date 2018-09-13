@@ -1,0 +1,117 @@
+<div class="modal-header no-border">
+  <!--   <img src="img/logoHeader.png" class="pull-right"> -->
+    <h3 class="modal-title"><i class="fa fa-plus"> </i>
+<button class="btn btn-default rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button>
+    <i class="glyph-icon flaticon-sell-product icon"></i>
+ 
+    </h3>
+
+</div>
+<div class="modal-body" un-refresh="item">
+    <form class="form-horizontal" method="get">
+   		<div class="row">
+<div class="col-sm-4">
+             <label class="col-sm-6 control-label "> <b><span translate="interface.partners.LOGO"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+            <div class="col text-center w-sm"  >
+                  <div class="thumb-xl avatar inline">
+                  <img src="{{item.images[0]}}" >
+                  </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <label class="col-sm-6 control-label "> <b><span translate="interface.partners.COMPANY_NAME"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+            {{item.companyName}}                     
+          </div>
+       
+    
+          <label class="col-sm-6 control-label"> <b><span translate="interface.partners.ADDRESS"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.address}}</span>
+          </div>
+     
+         
+          <label class="col-sm-6 control-label"> <b><span translate="interface.partners.COMPANY_PHONE"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.phone}}</span>
+          </div>
+       
+        
+          <label class="col-sm-6 control-label"> <b><span translate="interface.partners.EMAIL"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.email}}</span>
+          </div>
+        
+       
+          <label class="col-sm-6 control-label"> <b><span translate="interface.partners.WEB"></span>: </b></label>
+          <div class="col-sm-6 form-control-static">
+          <span>{{item.url}}</span>
+          </div>
+        </div>  
+    
+        <div class="line line-dashed b-b line-lg "></div>
+        
+          <label class="col-sm-3 control-label"> <b><span translate="interface.partners.REP_NAME"></span>: </b></label>
+          <div class="col-sm-9 form-control-static">
+          <span>{{item.repName}}</span>
+          </div>
+       
+        
+          <label class="col-sm-3 control-label"> <b><span translate="interface.partners.REP_EMAIL"></span>: </b></label>
+          <div class="col-sm-9 form-control-static">
+          <span>{{item.repEmail}}</span>
+          </div>
+       
+        
+          <label class="col-sm-3 control-label"> <b><span translate="interface.partners.REP_TITTLE"></span>: </b></label>
+          <div class="col-sm-3 form-control-static">
+          <span>{{item.repTittle}}</span>
+          </div>
+
+        <div class="line line-dashed b-b line-lg "></div>
+          <div class="col-sm-6">
+             <label class="col-sm-6 control-label"> <b><span translate="interface.partners.FINANCIAL_REP"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.repFinancialName}}</span>
+            </div>
+
+             <label class="col-sm-6 control-label"> <b><span translate="interface.partners.FINANCIAL_REP_EMAIL"></span>: </b></label>
+            <div class="col-sm-6 form-control-static">
+            <span>{{item.repFinancialEmail}}</span>
+            </div> 
+
+          </div>
+          <div class="col-sm-6">       
+
+             <label class="col-sm-4 control-label"> <b><span translate="interface.partners.BANK_NAME"></span>: </b></label>
+            <div class="col-sm-8 form-control-static">
+            <span>{{item.bankName}}</span>
+            </div>
+
+                  
+
+             <label class="col-sm-4 control-label"> <b><span translate="interface.partners.ACCOUNT_TYPE"></span>: </b></label>
+            <div class="col-sm-8 form-control-static">
+            <span>{{item.accountType}}</span>
+            </div>
+
+           <div></div>
+
+            <label class="col-sm-4  control-label"> <b><span translate="interface.partners.ACCOUNT"></span>: </b></label>
+            <div class="col-sm-8 form-control-static">
+            <span>{{item.account}}</span>
+            </div>
+
+             <label class="col-sm-4  control-label"> <b><span translate="interface.partners.ROUTING"></span>: </b></label>
+            <div class="col-sm-8 form-control-static">
+            <span>{{item.routing}}</span>
+            <br/><br/>
+            </div> 
+
+          </div>
+          
+		</div>
+    </form>
+</div>

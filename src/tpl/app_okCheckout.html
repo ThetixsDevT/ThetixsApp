@@ -1,0 +1,40 @@
+
+
+<div class="bg-light lter b-b wrapper-md" >
+  <h1 class="m-n font-thin h3" translate="interface.all.FINISH">!</h1>
+</div>
+<div class="wrapper-md"  >
+  <div class="row">
+    <div class="col-sm-offset-3 col-sm-6" >
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold" translate="interface.all.SEND_TIXS"></div>
+        <div class="panel-body">
+          <div class="no-boot"  >
+            <form novalidate>
+              <p></p>
+              <div  class="text-mute" style="font-size: 20px; font-weight: 20px;">
+                <img src="img/sendTixs.png">
+                <!-- <img src="img/sending.gif"> -->
+              </div>
+              <div class="form-group">
+                <label translate="interface.all.CUSTOMER_NAME"> </label>
+                <input type="text" class="form-control" placeholder="Enter Name" ng-model="item.name">
+              </div>
+              <div class="form-group">
+                <label translate="interface.all.CUSTOMER_EMAIL"> </label>
+                <input type="email" class="form-control" placeholder="Enter email" ng-model="item.email">
+              </div>
+              <div>
+                <input ng-click="sendTixs(item)" ng-disabled="isProcessing" type="submit" id="submit" value="Send" class="btn btn-success  btn-rounded btn-block">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

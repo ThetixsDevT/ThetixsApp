@@ -1,0 +1,156 @@
+ <div class=" wrapper-md">
+  <h1 class="m-n font-thin h3" ><i class="glyph-icon flaticon-group icon " ></i> <spam class="m-n font-thin h3" translate="interface.vendors.NEW_VENDOR">New Vendor</spam>
+  <span ng-controller="ModalDemoCtrl" class="pull-right">
+      <button class="btn btn-primary btn-rounded " ng-click="vendors()"><I class="fa fa-list"></I></button>
+    </spam></h1>
+</div>
+<div class="wrapper-md">
+ <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <tabset class="tab-container" ng-init="steps={percent:20, step1:true, step2:false, step3:false}">  
+    <tab active="steps.step1" select="steps.percent=10">
+     <tab-heading >
+        <div class="panel-heading font-bold"  translate="interface.vendors.PERSONAL_INFO" ">Personal Info </div>
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+           <form name="step1" class="form-horizontal form-validation">
+           
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.NAME">Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" ng-model="item.name" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.LAST_NAME">Last Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.lastName" required >                       
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.EMAIL">Email:</label>
+              <div class="col-sm-4">
+                <input type="email" placeholder="Email" class="form-control rounded" ng-model="item.email" required>         
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.PHONE">Phone</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.phone" required >                       
+              </div>
+            </div>           
+            </form>
+            <div class="m-t m-b col-offset-7">
+              <button type="submit" ng-disabled="step1.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.vendors.NEXT">Next</button>
+            </div>
+    </tab>
+    <tab   disabled="step1.$invalid" active="steps.step2" select="steps.percent=40">
+      <tab-heading  >
+      
+        <div class="panel-heading font-bold"  translate="interface.vendors.COMPANY_INFO" ">Company Info </div>
+        </tab-heading>
+  
+        <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+          <form name="step2" class="form-horizontal form-validation">
+           <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.COMPANY"></label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.company" required >                       
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.JOB_TITTLE"></label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.jobTittle" required>                       
+              </div>
+            </div>
+            <!--  <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.COUNTRY"></label>
+              <div class="col-sm-4">
+               <input type="text"  class="form-control rounded" ng-model="item.country" required> 
+              </div>
+            </div> -->
+
+              <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.COUNTRY"></label>
+              <div class="col-sm-4">
+              <ui-select ng-model="item.country" theme="bootstrap">
+            <ui-select-match placeholder="Select a country...">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices group-by="'group'" repeat="item in countries | filter: $select.search">
+              <span ng-bind-html="item.name | highlight: $select.search"></span>
+              <small ng-bind-html="item.code | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+              </div>
+            </div>
+
+
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.CITY"></label>
+              <div class="col-sm-4">
+               <input type="text"  class="form-control rounded" ng-model="item.city" required> 
+              </div>
+            </div>
+             <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.WORK_PHONE"></label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.workPhone" >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.WORK_EMAIL"></label>
+              <div class="col-sm-4">
+                <input type="email" class="form-control rounded" e-rows="7" ng-model="item.workEmail" >                       
+              </div>
+            </div>
+           
+          </form>
+           <div class="m-t m-b">
+          <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step1=true"  translate="interface.vendors.PREV">Prev</button>
+           <button type="submit" ng-disabled="step2.$invalid" class="btn btn-default btn-rounded" ng-click="steps.step3=true" translate="interface.vendors.NEXT">Next</button>
+         
+        </div>
+    </tab>
+    <tab disabled="step2.$invalid" active="steps.step3" select="steps.percent=60">
+       <tab-heading >
+
+        <div class="panel-heading font-bold"  translate="interface.vendors.FINANCIAL_INFO"> </div>
+        
+        </tab-heading>
+      <progressbar value="steps.percent" class="progress-xs" type="success"></progressbar>
+     <form name="step3" class="form-horizontal form-validation">
+       
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.BANK_NAME">Bank Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.bankName" required>                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.ACCOUNT_TYPE">Account Type</label>
+              <div class="col-sm-3">
+                <input type="text" class="form-control rounded" e-rows="7" ng-model="item.accountType" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.ACCOUNT">Account</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="item.account" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.vendors.ROUTING">Routing</label>
+              <div class="col-sm-6">
+                <input type="number" class="form-control rounded" e-rows="7" ng-model="item.routing" required >                       
+              </div>
+            </div>
+            <div class="m-t m-b">
+        <button type="button" class="btn btn-default btn-rounded" ng-click="steps.step2=true" translate="interface.vendors.PREV">Prev</button>
+        <button type="button" class="btn btn-default btn-rounded" ng-click="saveNewVendor(item)" translate="interface.vendors.FINISH">Click me to Finish</button>
+      </div>
+          </form>
+
+     
+    </tab>
+  </tabset>
+</div>

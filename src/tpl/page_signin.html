@@ -1,0 +1,52 @@
+
+ <style>
+     
+        .app {  background: url(img/bg.jpg);background-size: 100% 100%;}
+    </style>
+
+<div class="container w-xxl w-auto-xs animated fadeInRight" ng-controller="SigninFormController" ng-init="app.settings.container = false;" style="border-radius:15px;background-color: #ffffff1a;padding: 25px;">
+<div class="dropdown hidden-sm text-dark font-bold pull-right" is-open="lang.isopen" dropdown style="margin-top: 10px;">
+            <a href class="dropdown-toggle" dropdown-toggle>
+            <!--   {{selectLang}}  --> <i class="fa fa-globe fa-2x"></i><b class="caret"></b>
+            </a>
+            <!-- dropdown -->
+            <ul class="dropdown-menu animated rubberBand w" >
+              <li ng-repeat="(langKey, label) in langs" >
+                <a ng-click="setLang(langKey, $event)" href>{{label}}</a>
+              </li>
+            </ul>
+            <!-- / dropdown -->
+</div>
+<div >
+  <img src="img/logoT.png" class=" text-center" >
+</div>
+  <!-- <a href class="navbar-brand block m-t">{{app.name}}</a> -->
+
+  <div class="m-b-lg ">
+    <div class="wrapper text-center text-dark">
+      <strong translate="aside.nav.BIENVENIDA_IN">Sign in to get in touch</strong>
+    </div>
+    <form name="form3" class="form-validation">
+      <div class="text-danger wrapper text-center" ng-show="authError">
+          {{authError}}
+      </div>
+      <div class="list-group list-group-sm">
+        <div class="list-group-item">
+          <input type="email" placeholder="Email" name="email" class="form-control no-border" ng-model="user.email" required>
+        </div>
+        <div class="list-group-item">
+           <input type="password" placeholder="Password" name="password" class="form-control no-border" ng-model="user.password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-lg btn-success btn-block btn-rounded" ng-click="login(user)" ng-disabled='form3.$invalid' translate="aside.nav.SIG_IN" style="font-size: 26px;">Log in</button>
+      <div class="text-center m-t m-b font-bold text-dark"><a ui-sref="access.forgotpwd"  translate="aside.nav.FORGOT">Forgot password?</a></div>
+    
+     <!--  <p class="text-center text-dark" translate="aside.nav.NOT_HAVE"><small>Do not have an account?</small></p> -->
+<!--      <br/><br/> -->
+      <a ui-sref="access.signup" class="btn btn-lg  btn-block btn-dark  btn-rounded text-white" style="font-size: 26px;" translate="aside.nav.CREATE_ACCOUNT" >Create an account</a>
+    </form>
+  </div>
+ <!--  <div class="text-center" ng-include="'tpl/blocks/page_footer.html'">
+    {% include 'blocks/page_footer.html' %}
+  </div> -->
+</div>

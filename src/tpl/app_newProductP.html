@@ -1,0 +1,281 @@
+<script type="text/ng-template" id="modalAddSchedule.html">
+  <div ng-include="'tpl/modalAddSchedule.html'"></div>
+</script>
+<div class="wrapper-md">
+  <h1 class="m-n font-thin h3" ><i class="glyph-icon flaticon-shopping-basket icon " ></i> 
+  <spam class="m-n font-thin h3" translate="interface.products.NEW_PRODUCT"></spam>
+  <span ng-controller="ModalDemoCtrl" class="pull-right">
+      <button class="btn btn-primary btn-rounded " ng-click="products()"><I class="fa fa-list"></I></button>
+  </spam>
+  </h1>
+</div>
+<div class=" bg-light lter" ng-controller="NewProductPCtrl">
+ <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form name="form1" class="form-horizontal form-validation">    
+        <div class="form-group">
+          <label class="col-sm-4 control-label"  translate="interface.products.PRODUCT_NAME"></label>
+          <div class="col-sm-7">
+            <input type="text" class="form-control rounded" ng-model="item.productName" required >
+          </div>
+        </div>
+
+
+<!--################################################################## IMAGENES -->
+               <!-- <div class="line line-dashed b-b line-lg "></div> -->
+          
+        <div class="form-group">
+          <label class="col-sm-4 control-label"  translate="interface.products.IMAGES"></label>
+          <div class="col-sm-7"> 
+            <input type="file" nv-file-select=""  uploader="uploader" multiple  />  
+          </div>
+        </div>           
+
+<!-- ############################## FIN IMAGENES  -->
+
+      <div class="form-group">
+          <div class="col-sm-4 " >
+          <img src="img/photos.png" style="padding-left:200px;">
+        </div>
+        <div class="col-sm-7">
+          <div class="wrapper-md">
+            <table class="table bg-white-only b-a">
+              <thead>
+              <tr>
+                  <th width="50%"><span translate="interface.fileUpload.NAME"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.SIZE"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.PROGRESS"></span></th>
+                  <th><span translate="interface.fileUpload.STATUS"></span></th>
+                  <th><span translate="interface.fileUpload.ACTIONS"></span></th>
+              </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="item in uploader.queue">
+                      <td><strong>{{ item.file.name }}</strong></td>
+                      <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                      <td ng-show="uploader.isHTML5">
+                          <div class="progress progress-sm m-b-none m-t-xs">
+                              <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                          </div>
+                      </td>
+                      <td class="text-center">
+                          <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+                          <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                          <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                      </td>
+                      <td nowrap>
+                          <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                              <span translate="interface.fileUpload.UPLOAD"></span>
+                          </button>
+                          <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                              <span translate="interface.fileUpload.CANCEL"></span>
+                          </button>
+                          <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                              <span translate="interface.fileUpload.REMOVE"></span>
+                          </button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <div>
+            <div>
+              <p><span translate="interface.fileUpload.QUEUE_PROGRESS"></span></p>
+              <div class="progress bg-light dker" style="">
+                  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-addon btn-success" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+              <i class="fa fa-arrow-circle-o-up"></i> <span translate="interface.fileUpload.UPLOAD_ALL"></span>
+            </button>
+            <button type="button" class="btn btn-addon btn-warning" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+              <i class="fa fa-ban"></i> <span translate="interface.fileUpload.CANCEL_ALL"></span>
+            </button>
+            <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                <i class="fa fa-trash-o"></i> <span translate="interface.fileUpload.REMOVE_ALL"></span>
+            </button>
+            </div>
+          </div>      
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label"  translate="interface.products.DESCRIPTION"></label>
+        <div class="col-sm-7">
+           <textarea class="form-control" rows="4" ng-model="item.description"> </textarea>                      
+        </div>
+      </div>
+            
+
+      <div class="form-group">
+        <div class="col-sm-4 control-label" >
+              <span translate="interface.products.CATEGORY"></span>      
+        </div>  
+   
+        <div class="col-sm-4">
+            <ui-select multiple ng-model="item.category" theme="bootstrap" ng-disabled="disabled">
+              <ui-select-match placeholder="Category...">{{$item.name}} </ui-select-match>
+              <ui-select-choices group-by="someGroupFn" repeat="item.name as item in categorys | propsFilter: {name: $select.search}">
+                <div ng-bind-html="item.name | highlight: $select.search"></div>
+           
+              </ui-select-choices>
+            </ui-select>
+          </div>
+      </div>
+
+      <div class="line line-dashed b-b line-lg "></div>
+
+      <div class="col-sm-4 control-label">
+          <span translate="interface.products.PRICES" >: 
+      </div>
+        <div class="col-sm-8 ">
+        <a  class="btn btn-xs btn-success rounded pull-right"  ng-click="add() " ><i  class="fa fa-plus"></i> <span translate="interface.products.PRICE"></span></a>
+        </div>
+        </br>
+        </br>
+        <p></p>
+        <div class="form-group" >
+          <div class="col-sm-2 col-sm-offset-3 pull-left" >
+            <span translate="interface.products.TYPE_PRICE"></span>
+          </div>
+          <div class="col-sm-2" >
+            <span translate="interface.products.PRICE"></span>
+          </div>
+          <div class="col-sm-2" >
+            <span translate="interface.products.PRICE_NET"></span>
+          </div>
+          <div class="col-sm-2" >
+            <span translate="interface.products.CURRENCY"></span>
+          </div>
+        </div>
+        <div class="form-group" ng-repeat="item in itemsPrice">
+          <div class="col-sm-2 col-sm-offset-3">
+             <input type="text"  class="form-control rounded"  ng-model="item.label" min="0">
+          </div>
+
+          <div class="col-sm-2">
+            <input type="number"  class="form-control rounded"  ng-model="item.price" min="0">
+          </div>
+        
+          <div class="col-sm-2">
+            <input type="number"  class="form-control rounded"  ng-model="item.netPrice" min="0">
+          </div>
+          <div class="col-sm-1">
+            <input type="text" disabled="disabled"  class="form-control rounded" style="font-size:11px;" ng-model="item.currency" >
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg "></div>
+                  
+        <div class="form-group">
+          <label class="col-sm-4 control-label" translate="interface.products.RESERVATION_REQUIRED"></label>
+          <div class="col-sm-4">
+            <label class="checkbox-inline i-checks" ng-click="activeBooking()">
+              <input type="checkbox" value="option1" ng-model="item.reservationRequired" ><i></i> 
+            </label>
+          </div>
+        </div>
+        <div id="booking" class="form-group bg-warning"  ng-show="item.reservationRequired" style="padding-bottom:120px;">
+          <br/><br/><br/><br/> 
+          <spam style="font-size:80px;padding-left: 36px;" class="m-n font-thin h3 ng-scope" translate="interface.products.BOOKING_SETUP"></spam>
+          <p></p>
+          <div class="form-group">  
+            <div class="col-sm-5 col-sm-offset-1">
+              <label class="col-sm-12  control-label text-dark" style="font-size:30px; text-align:center"  translate="interface.products.UNAVAILABILITY"></label>
+              <div class="form-group">
+                <div class="col-sm-12" style="padding:0px 0px 0px 39px;">
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true" ng-model="item.mo" ng-click="selectDay(item)"><i></i> <label translate="interface.products.MO"></label>
+                  </label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.tu" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.TU"></label>
+                  </label>
+                  <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.we" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.WE"></label>
+                  </label>
+                   <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.th" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.TH"></label>
+                  </label>
+                   <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.fr" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.FR"></label>
+                  </label>
+                   <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.sa" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.SA"></label>
+                  </label>
+                   <label class="checkbox-inline i-checks">
+                    <input type="checkbox" value="true"  ng-model="item.su" ng-click="selectDay(item)"><i></i>  <label translate="interface.products.SU"></label>
+                  </label>
+                </div>
+              </div>
+              <br/>
+              <div class="col-sm-6"style="color:black; height: 100%; width: 100%;background-color: white; padding: 10px; border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);" >
+                <multiple-date-picker ng-model="selectedDays3" disallow-back-past-months="true" week-days-off="weekOff"> </multiple-date-picker>
+              </div> 
+            </div>
+            <div class="col-sm-6">
+              <br></br><br></br>
+              <label class="col-sm-4  control-label text-dark"  translate="interface.products.CAPACITY" style="font-size:30px;margin: 0px 0px 0px 0px;"></label>
+              <div class="col-sm-3"  style="margin:10px 0px 0px 0px;">
+                <input type="number"  class="form-control rounded font-bold"  ng-model="item.capacity" min="0" style="font-size:25px;">
+              </div>
+              <div class="col-sm-4" style="margin: 0px 0px 0px 0px;">
+                <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" name="a" value="global" ng-model="item.capacityType">
+                    <i></i>
+                    Global
+                  </label>
+                </div>
+                <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" name="a" value="pschedule" checked ng-model="item.capacityType">
+                    <i></i>
+                    P/Schedule
+                  </label>
+                </div>
+              </div>
+              <br></br>
+              <label class="col-sm-7   control-label text-dark"  translate="interface.products.DURATION" style="padding-top:47px;font-size:30px;"></label>
+              <div class="col-sm-4" style="padding-top:15px;">
+                <timepicker ng-model="duration" ng-change="changed()" hour-step="hstep2" minute-step="mstep2" show-meridian="false"  class="font-bold" style="font-size:25px;"></timepicker>
+              </div>
+              <br></br>
+              <label class="col-sm-4  control-label text-dark" style="font-size:30px;padding-top:15px;"  translate="interface.products.SCHEDULES" ></label>
+              <div class="col-sm-1" style="padding-top:10px;" >
+                <a  class="btn btn-xs btn-success rounded t pull-left"  ng-click="addSchedule() "><i  class="fa fa-plus" ></i></a>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                      <div class="col-sm-12" style="padding-top:25px;" ui-refres="itemSchedules">
+                    <ui-select multiple ng-model="item.schedules" theme="bootstrap" ng-disabled="disabled" style="background-color: white; padding: 10px; border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                      <ui-select-match placeholder="Select..." style="padding:0px 0px 0px 6px;">{{$item.description}} </ui-select-match>
+                      <ui-select-choices group-by="someGroupFn" repeat="item.description as item in itemSchedules | propsFilter: {description: $select.search}">
+                        <div ng-bind-html="item.description | highlight: $select.search"></div> 
+                      </ui-select-choices>
+                    </ui-select>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <br/>        
+        </div>
+                <!-- <div class="line line-dashed b-b line-lg "></div> -->
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label"  translate="interface.products.NOTES"></label>
+          <div class="col-sm-7">
+            <textarea class="form-control" rows="4" ng-model="item.notes"> </textarea>                      
+            </div>
+        </div>
+
+                <!-- <div class="line line-dashed b-b line-lg "></div> -->
+
+        <span class="input-btn pull-right" >
+        <button type="button" class="btn btn-primary rounded" tooltip="save" ng-click="saveNewProduct(item)"><i class="fa fa-save"></i></button>
+        </span>
+      </form>
+    </div>
+  </div>  
+</div>

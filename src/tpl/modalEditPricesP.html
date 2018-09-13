@@ -1,0 +1,73 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{item.productName}}  <button class="btn btn-default rounded pull-right" ng-click="cancel()"><i class="fa fa-close"></i></button></h3>
+     
+</div>
+<div class="modal-body animated fadeInUp" >
+    <div class="row">
+     <div class="wrapper-md" >
+                <div class=" pull-right" ng-show="tableform.$visible">
+                	  <a  class="btn  btn-xs btn-success rounded pull-right"  ng-click="addItemPrice() " ><i  class="fa fa-plus"></i> <span translate="interface.products.PRICE"></span>
+                	  </a>
+                </div> 
+                <p></p>
+                <br/>
+              <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
+                <!-- table -->
+
+
+                
+                <table class="table table-bordered table-hover table-condensed bg-white-only">
+                  <tr style="font-weight: bold">
+                    <td style="width:30%"><span translate="interface.products.TYPE_PRICE"></span></td>
+                    <td style="width:30%"><span translate="interface.products.PRICE"></span></td>
+                    <td style="width:30%"><span translate="interface.products.PRICE_NET"></span></td>
+                 <!--    <td style="width:10%"><span ><span translate="interface.products.COMMISSION"></span></span></td> -->
+                       <td style="width:10%"><span translate="interface.products.ACTION" ng-show="tableform.$visible"></span></td>
+                  </tr>
+                  <tr ng-repeat="item in item.itemsPrices | filter:filterPrice">
+                    <td>
+                      <!-- editable username (text with validation) -->
+                      <span editable-text="item.label" class="col-sm-1" e-form="tableform" onbeforesave="checkName($data, user.id)">
+                        {{ item.label || 'empty' }}
+                      </span>
+                    </td>
+                    <td>
+                      <!-- editable status (select-local) -->
+                      <span editable-text="item.price" e-form="tableform" >
+                      $  {{ item.price || 'empty'  }}
+                      </span>
+                    </td>
+                    <td>
+                      <!-- editable status (select-local) -->
+                      <span editable-text="item.netPrice" e-form="tableform" >
+                      $  {{ item.netPrice || 'empty'  }}
+                      </span>
+                    </td>
+
+                    <td><button type="button" ng-show="tableform.$visible" ng-click="removePrice($index)" class="btn btn-sm rounded btn-danger pull-right"><i class="fa fa-trash"></i></button></td>
+                  </tr>
+                </table>
+
+                <div >
+                  <button type="button" class="btn btn-success btn-sm rounded pull-right" ng-show="!tableform.$visible" ng-click="saveChanges(item)">
+                    <span translate="interface.products.SAVE_CHANGES"></span>
+                  </button>
+                </div>
+                <div class="btn-edit">
+                  <button type="button" class="btn btn-default btn-sm rounded pull-right" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+                    <span translate="interface.products.EDIT"></span>
+                  </button>
+                </div>
+                
+                <div class="btn-form pull-right" ng-show="tableform.$visible">
+
+                  <button type="submit" ng-disabled="tableform.$waiting" class="btn btn-success rounded">
+                  	 <span translate="interface.products.ACEPT"></span>
+                  </button>
+                
+                </div> 
+                
+              </form>
+            </div>
+
+</div>

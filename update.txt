@@ -1,0 +1,8 @@
+### Release v1.0.0
+
+## Features
+- Partners
+- Vendors
+- Clients
+- Sales
+- Products

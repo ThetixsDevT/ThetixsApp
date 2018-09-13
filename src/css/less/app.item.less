@@ -1,0 +1,60 @@
+.item{
+  position: relative;
+  .top{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .center{
+    position: absolute;
+    top:50%;
+  }
+}
+.item-overlay{
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  &.active,
+  .item:hover & {
+    display: block;
+  }
+}
+
+.product{
+ background-color: #F9F9F9;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 1s;
+}
+.product:after{
+background-color: #F9F9F9;
+ box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  transition: box-shadow 1s;
+}
+.product:hover{
+   background-color: #fff;
+  transition: box-shadow 1s;
+  box-shadow:20px 20px 50px 0 rgba(44, 50, 50, 0.28);
+}
+.product:hover:after{
+ background-color: #F9F9F9;
+   transition: opacity .5s;
+  opacity: 0;
+}
+
+
+terminator: rgba(254,254,254,1);
+terminator: -moz-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(226,226,226,0.12) 100%);
+terminator: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,254,254,1)), color-stop(100%, rgba(226,226,226,0.12)));
+terminator: -webkit-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(226,226,226,0.12) 100%);
+terminator: -o-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(226,226,226,0.12) 100%);
+terminator: -ms-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(226,226,226,0.12) 100%);
+terminator: linear-gradient(to bottom, rgba(254,254,254,1) 0%, rgba(226,226,226,0.12) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e2e2e2', GradientType=0 );

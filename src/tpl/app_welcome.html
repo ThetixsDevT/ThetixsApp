@@ -1,0 +1,707 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  "  ng-if="app.level == '1'" >
+
+  <div class="col">
+
+    <div class="bg-light lter b-b wrapper-md" ng-controller="FlotChartDemoCtrl">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black" translate="interface.all.ACTIVITY_SUMMARY">Activity summary</h1>
+          <small class="text-muted" translate="interface.all.SUMMARY_TEXT">Summary of activity during the month</small>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+          <div class="inline m-r text-left">
+            <div class="m-b-xs">
+            <!-- {{totalsales}}  -->
+            -
+            <span class="text-muted" translate="interface.all.SALES_OF_THE_MONTH">Sales of the month</span></div>
+
+          </div>
+          <div class="inline text-left">
+            <div class="m-b-xs">-<span class="text-muted" translate="interface.all.SALES_REVENUE_FOR_THE_MONTH">Sales revenue for the month</span></div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+
+   
+        <div class="col-md-12">
+          <div class="panel wrapper animated fadeInLeft "  style="background-color: white; padding: 10px; border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+            <label class="i-switch bg-warning pull-right" ng-init="showSpline=true">
+              <input type="checkbox" ng-model="showSpline">
+              <i></i>
+            </label>
+            <h4 class="font-thin m-t-none m-b text-muted" translate="interface.all.MONTHLY_SALES">Monthly sales</h4>
+            <div ui-jq="plot" ui-refresh="showSpline" ui-options="
+              [
+                { data: {{d0_1}}, label:'Net', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.1, lineWidth: 1, fill: 0.6 } },
+                { data: {{d0_2}}, label:'Brut', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.1, lineWidth: 1, fill: 0.6 } }
+              ], 
+              {
+                colors: ['{{app.color.info}}', '{{app.color.primary}}', '{opacity: 0.9}', '{opacity: 0.5}'],
+                series: { shadowSize: 3 },
+                xaxis:{ font: { color: 'black' } },
+                yaxis:{ font: { color: 'black' }, max:20 },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+                tooltip: true,
+                tooltipOpts: { content: 'Sales of %x.0 is $ %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+              }
+            " style="height:216px" >
+            </div>
+          </div>
+           <div class="col-md-12" ng-controller="FlotChartDemoCtrl">
+          <div class="row col-sm-12 text-center">
+            <div class="col-xs-4 animated fadeInLeft" >
+             <a  ui-sref="app.partners" class="block panel padder-v bg-default item"  style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+              <span class="badge badge-sm up bg-danger pull-right-xs pull-right elem" ng-show="totalNewPartners > '0' " style=" margin-right: 5px;">+ {{totalNewPartners}}</span>
+                <div class="h1 text-info font-thin h1">{{totalPartners}}</div>
+                <span class="text-muted text-xs " style="font-size: 18px;"translate="interface.all.PARTNERS">Partners</span>
+                <span class="top text-left w-full">
+                  <i class="glyph-icon flaticon-sell-product text-info m-l-sm m-r-smm" ></i>
+                </span>
+                </a>
+            </div>
+            <div class="col-xs-4 " >
+              <a  ui-sref="app.vendors" class="block panel padder-v bg-primary item animated fadeInDown"  style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+               <span class="badge badge-sm up bg-danger pull-right-xs pull-right elem" ng-show="totalNewVendors > '0' " style=" margin-right: 5px;">+ {{totalNewVendors}}</span>
+                <span class="text-white font-thin h1 block">{{totalVendors}}</span>
+                <span class="text-muted text-xs" style="font-size: 18px;" translate="interface.all.VENDORS">Vendors</span>
+                <span class="bottom text-right w-full">
+                  <i class="glyph-icon flaticon-group icon text-muted m-r-sm"></i>
+                </span>
+              </a>
+            </div>
+            <div class="col-xs-4 animated fadeInUp"  >
+              <a ui-sref="apps.products"  class="block panel padder-v bg-info item"  style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                <span class="text-white font-thin h1 block">{{totalProducts}}</span>
+                <span class="text-muted text-xs" style="font-size: 18px;" translate="interface.all.PRODUCTS">Products</span>
+                <span class="top">
+                  <i class="glyph-icon flaticon-shopping-basket text-white m-l-sm m-r-sm"></i>
+                </span>
+              </a>
+            </div>
+            <!-- <div class="col-xs-6 animated fadeInRight" ng-show="totalReservations">
+              <div class="panel padder-v item">
+                <div class="font-thin h1">12</div>
+                <span class="text-muted text-xs">Reservations</span>
+                <div class="bottom">
+                  <i class="fa fa-caret-up text-warning m-l-sm m-r-sm"></i>
+                </div>
+              </div>
+            </div> -->
+          
+          </div>
+           
+        </div>
+        </div>
+
+   
+    
+     
+
+      <div class="panel hbox hbox-auto-xs no-border">
+       
+        
+      </div>
+     
+    </div>
+  </div>
+
+  <div class="col w-md bg-white-only b-l bg-auto no-border-xs ">
+    <div class="nav-tabs-alt" >
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+          <a data-target="#tab-1" role="tab" data-toggle="tab">
+            <i class="glyph-icon flaticon-call-center-worker-with-headset text-md text-muted wrapper"></i>
+          </a>
+        </li>
+         <li>
+          <a data-target="#tab-2" role="tab" data-toggle="tab">
+            <i class="fa fa-2x fa-info text-muted wrapper"></i>
+          </a>
+        </li>
+      
+      </ul>
+    </div>
+    <div class="tab-content animated fadeInUp">
+      <div role="tabpanel" class="tab-pane active" id="tab-1">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md" translate="interface.all.SUPPORT_TICKETS"></div>
+          <ul class="list-group no-bg no-borders pull-in">
+          
+        
+          </ul>
+                   
+        </div>
+                      
+      </div>
+      <div role="tabpanel" class="tab-pane tab-3" id="tab-2">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md">Info</div>
+          <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
+            <div class="col-md-12">
+         <div class="col wrapper-lg w-lg   r-r animated fadeInDown" style="height: 280px;">
+          <h4 class="font-thin m-t-none m-b" translate="interface.all.MOST_WANTED_TAGS">Most wanted tags</h4>
+          <div class="">
+            <div class="">
+              <span class="pull-right text-primary">60%</span>
+              <span>Familiar</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-primary" data-toggle="tooltip" data-original-title="60%" style="width: 60%"></div>
+            </div>
+            <div class="">
+              <span class="pull-right text-info">35%</span>
+              <span>Full-day</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="35%" style="width: 35%"></div>
+            </div>
+            <div class="">
+              <span class="pull-right text-warning">25%</span>
+              <span>EDU management</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-warning" data-toggle="tooltip" data-original-title="23%" style="width: 25%"></div>
+            </div>
+          </div>
+      
+        </div>
+       </div>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- <div role="tabpanel" class="tab-pane tab-3" id="tab-3">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md">Transaction</div>
+          <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
+         
+          </ul>
+        </div>
+      </div> -->
+    </div>
+
+<!-- fin  -->
+
+  
+    <div data-ng-include=" 'tpl/blocks/aside.right.html' ">
+      {% include '../tpl/blocks/aside.right.html' %}
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Partner"s Dashboard  -->
+
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  " ng-if="app.level == 2">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black" translate="interface.all.DASHBOARD"></h1>
+         <small class="text-muted" translate="interface.all.SUMMARY_TEXT">Summary of activity during the month</small>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+          <div class="inline m-r text-left">
+            <div class="m-b-xs">- <span class="text-muted">Sales of the month</span></div>
+
+          </div>
+          <div class="inline text-left">
+            <div class="m-b-xs">-<span class="text-muted">Sales revenue for the month</span></div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+      <!-- stats -->
+      <div class="row">
+   
+     
+             <div class="col-md-12" ng-controller="FlotChartDemoCtrl">
+          <div class="">
+             <div class="col-xs-4 text-center ">
+              <a ui-sref="apps.productsP" class="block panel padder-v bg-info item animated fadeInLeft"  style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                <span class="text-white font-thin h1 block">{{totalProducts}}</span>
+                <span class="top ">
+                  <i class="glyph-icon flaticon-shopping-basket text-white m-l-sm m-r-sm pull-right"></i>
+                </span>
+                <span class="text-muted text-xs" translate="interface.all.MY_PRODUCTS"></span>
+               
+              </a>
+
+               <div style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+      <div class="panel panel-default  animated fadeInUp" >
+        <div class="panel-heading font-bold">
+          Balance
+        </div>
+        <div class="panel-body text-center">
+          <h4><small>last </small>12<small> hrs</small></h4>
+          <small class="text-muted block">yesterday: 0%</small>
+          <div class="inline">
+            <div ui-jq="easyPieChart"  ui-options="{
+                      percent: 0,
+                      lineWidth: 10,
+                      trackColor: '{{app.color.light}}',
+                      barColor: '{{app.color.success}}',
+                      scaleColor: '{{app.color.light}}',
+                      size: 188,
+                      lineCap: 'butt',
+                      animate: 1000
+                    }">
+              <div>
+                <span class="h2 m-l-sm step">0</span>%
+                <div class="text text-sm">today</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer"><small>% of change</small></div>
+      </div>
+    </div>
+
+
+            </div>
+            <div class="col-xs-8">
+              <div class="panel wrapper animated fadeInDown "  style="background-color: white; border-radius: 10px; box-shadow: 5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+            <label class="i-switch bg-warning pull-right" ng-init="showSpline=true">
+              <input type="checkbox" ng-model="showSpline">
+              <i></i>
+            </label>
+            <h4 class="font-thin m-t-none m-b text-muted" translate="interface.all.MONTHLY_SALES">Monthly sales</h4>
+            <div ui-jq="plot" ui-refresh="showSpline" ui-options="
+              [
+                { data: {{d0_1}}, label:'Net', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.1, lineWidth: 1, fill: 0.6 } },
+                { data: {{d0_2}}, label:'Brut', points: { show: true, radius: 1}, splines: { show: {{showSpline}}, tension: 0.1, lineWidth: 1, fill: 0.6 } }
+              ], 
+              {
+                colors: ['{{app.color.success}}', '{{app.color.info}}', '{opacity: 0.9}', '{opacity: 0.5}'],
+                series: { shadowSize: 3 },
+                xaxis:{ font: { color: 'black' } },
+                yaxis:{ font: { color: 'black' }, max:20 },
+                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+                tooltip: true,
+                tooltipOpts: { content: 'Sales of %x.0 is $ %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+              }
+            " style="height:216px" >
+            </div>
+          </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+<div class="alert alert-info" role="alert" ng-if="app.complete == 'no'">
+  <h4 class="alert-heading">Well done!</h4>
+  <p>For a correct operation of the platform we invite you to complete the information of <a ui-sref="app.page.profile" class="alert-link">your profile</a></p>
+  <!-- <hr> -->
+  <!-- <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> -->
+</div>
+
+ 
+   <!--  
+     <div ng-controller="AlertDemoCtrl" class="m-b-md animated fadeInDown">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)"  class="alert-link">{{alert.msg}}  {{alert.button}}</alert>
+      </div>  -->
+    </div>
+
+  </div>
+
+  <div class="col w-md bg-white-only b-l bg-auto no-border-xs ">
+    <div class="nav-tabs-alt" >
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+          <a data-target="#tab-1" role="tab" data-toggle="tab">
+            <i class="glyph-icon flaticon-call-center-worker-with-headset text-md text-muted wrapper"></i>
+          </a>
+        </li>
+
+        <li>
+          <a data-target="#tab-3" role="tab" data-toggle="tab">
+            <i class="glyph-icon flaticon-rounded-shop-cart text-md text-muted wrapper"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content animated fadeInUp">
+      <div role="tabpanel" class="tab-pane active" id="tab-1">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md" translate="interface.all.SUPPORT_TICKETS">Support tickets</div>
+          <ul class="list-group no-bg no-borders pull-in">
+   <!--          <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">  
+                <img src="img/a4.jpg" alt="..." class="img-circle">
+                <i class="on b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Chris Fox</a></div>
+                <small class="text-muted">California Adventure</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a5.jpg" alt="..." class="img-circle">
+                <i class="on b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Mogen Polish</a></div>
+                <small class="text-muted">ECOWILD TOURS</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a6.jpg" alt="..." class="img-circle">
+                <i class="busy b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Joge Lucky</a></div>
+                <small class="text-muted">Travels & Trips</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a7.jpg" alt="..." class="img-circle">
+                <i class="away b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Folisise Chosielie</a></div>
+                <small class="text-muted">Andes Proadventures</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a8.jpg" alt="..." class="img-circle">
+                <i class="away b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Aron Gonzalez</a></div>
+                <small class="text-muted">Global Travels</small>
+              </div>
+            </li> -->
+          </ul>
+                   
+        </div>
+                      
+      </div>
+ 
+      <div role="tabpanel" class="tab-pane tab-3" id="tab-3">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md">Transaction</div>
+          <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
+            <!-- <li class="list-group-item">
+              <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
+              <span class="block text-md text-info">B 15,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Got from Mike at 1:00 pm</span>
+              <span class="block text-md text-primary">B 23,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Sponsored ORG at 9:00 am</span>
+              <span class="block text-md text-warning">B 3,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Send to Jacob at 8:00 am</span>
+              <span class="block text-md">B 11,000.00</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!-- fin  -->
+
+  
+    <div data-ng-include=" 'tpl/blocks/aside.right.html' ">
+      {% include '../tpl/blocks/aside.right.html' %}
+    </div>
+  </div>
+  <!-- / right col -->
+</div>
+
+<!-- Partner's Dashboard -->
+
+
+
+
+
+
+
+
+<!-- Vendor"s Dashboard  -->
+
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-init="
+    app.settings.asideFolded = false; 
+    app.settings.asideDock = false;
+  " ng-if="app.level == 3">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black" translate="interface.all.DASHBOARD"></h1>
+         <small class="text-muted" translate="interface.all.SUMMARY_TEXT">Summary of activity during the month</small>
+        </div>
+        <div class="col-sm-6 text-right hidden-xs">
+          <div class="inline m-r text-left">
+            <div class="m-b-xs">{{app.salesLength}} <span class="text-muted">Sales of the month</span></div>
+
+          </div>
+          <div class="inline text-left">
+            <div class="m-b-xs">- <span class="text-muted">Sales revenue for the month</span></div>
+      
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md" ng-controller="FlotChartDemoCtrl">
+      <!-- stats -->
+      <div class="row">
+    <!--   <div class="col-sm-6">
+          <div class="panel no-border animated animated rubberBand">
+            <div class="panel-heading bg-primary lt " style="height:256px">
+              <div class="m-sm">
+                <span class="pull-right"><i class="fa fa-caret-up text-warning text-lg"></i></span>
+                <span class="h4 text-white">Monthly income</span>
+              </div>              
+              <div class="text-center m-t-md">
+                  <div ui-jq="sparkline" ui-options="
+                  [50.32,45.23,47.56,36.25,53.85,40.15,41.25,50.15,57.14,36.15,97.26,50.15,45.32,47.19,37.75,25.15,56.34,50.35,47.25,53.15], 
+                  {type:'line', height:80, width: '100%', lineWidth:4, lineColor:'#fff', spotColor:'#fff', fillColor:'', highlightLineColor:'#fff', spotRadius:6, minSpotColor:'{{app.color.warning}}', maxSpotColor:'{{app.color.info}}'}
+                  ">loading...</div>
+
+                  <div ui-jq="sparkline" ui-options="[ 10,9,11,10,11,10,12,10,9,10,11,9,8 ], 
+                  {type:'bar', height:60, barWidth:4, barSpacing:6, barColor:'{{app.color.primary}}'}
+                  " class="sparkline inline m-t m-b-n-sm"></div>
+              </div>
+            </div>
+            <div class="hbox bg-primary bg">
+              <div class="col wrapper">
+                <span>Previous</span>
+                <div class="h1 text-info font-thin ">12,790</div>
+              </div>
+              <div class="col wrapper bg-info font-bold ">
+                <span>Current</span>
+                <div class="h1 text-warning font-thin font-bold">$ 2,560</div>
+              </div>
+            </div>
+            <div class="panel-footer bg-light lter wrapper">
+              <div class="row">
+                <div class="col-xs-4">
+                  <small class="text-muted block">Active</small>
+                  <span class="text-md">1,500</span>
+                </div>
+                <div class="col-xs-4">
+                  <small class="text-muted block">Inactive</small>
+                  <span class="text-md">10,430</span>
+                </div>
+                <div class="col-xs-4">
+                  <small class="text-muted block">Sleeping</small>
+                  <span class="text-md">400</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+     
+             <div class="col-md-6" ng-controller="FlotChartDemoCtrl">
+          <div class="row row-sm text-center">
+             <div class="col-xs-6 animated fadeInDown">
+              <a  class="block panel padder-v bg-info item" ui-sref="app.salesV" style=" border-radius: 10px; box-shadow:       5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+               <!-- <a ui-sref="apps.productsP" class="block panel padder-v bg-info item" ng-click="add()"> -->
+                <span class="text-white font-thin h1 block">{{app.salesLength}}</span>
+                <span class="top ">
+
+                  <i class="glyph-icon flaticon-rounded-shop-cart  text-white m-l-sm m-r-sm pull-right"></i>
+                </span>
+                <span class="text-white text-xs" translate="interface.all.MY_SALES"></span>
+               
+              </a>
+            </div>
+            <div class="col-xs-6 animated fadeInRight" >
+              <a   class="block panel padder-v bg-success item"  style=" border-radius: 10px; box-shadow:      5px 5px 17px 0px rgba(44, 50, 50, 0.14);">
+                <span class="text-white font-thin h1 block">2/2 </span>
+                <span class="text-white text-xs" translate="interface.all.PAYOUTS"></span>
+                <span class="top" >
+                  <i class="glyph-icon flaticon-badge icon text-white m-l-sm m-r-sm pull-right" ></i>
+                </span>
+              </a>
+            </div>
+            
+            
+           
+           
+           <!--  <div class="col-xs-12 m-b-md" >
+               <div class="col wrapper-lg  bg-light dk r-r animated fadeInUp">
+          <h4 class="font-thin m-t-none m-b" translate="interface.all.MOST_SELLED"></h4>
+          <div class="">
+            <div class="">
+              <span class="pull-right text-primary">60%</span>
+              <span>Familiar</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-primary" data-toggle="tooltip" data-original-title="60%" style="width: 60%"></div>
+            </div>
+            <div class="">
+              <span class="pull-right text-info">35%</span>
+              <span>Full-day</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-info" data-toggle="tooltip" data-original-title="35%" style="width: 35%"></div>
+            </div>
+            <div class="">
+              <span class="pull-right text-warning">25%</span>
+              <span>EDU management</span>
+            </div>
+            <div class="progress progress-xs m-t-sm bg-white">
+              <div class="progress-bar bg-warning" data-toggle="tooltip" data-original-title="23%" style="width: 25%"></div>
+            </div>
+          </div>
+          <p class="text-muted">Dales nisi nec adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis</p>
+        </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    
+     
+    </div>
+  </div>
+
+  <div class="col w-md bg-white-only b-l bg-auto no-border-xs ">
+    <div class="nav-tabs-alt" >
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+          <a data-target="#tab-1" role="tab" data-toggle="tab">
+            <i class="glyph-icon flaticon-call-center-worker-with-headset text-md text-muted wrapper"></i>
+          </a>
+        </li>
+
+        <li>
+          <a data-target="#tab-3" role="tab" data-toggle="tab">
+            <i class="glyph-icon flaticon-rounded-shop-cart text-md text-muted wrapper"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content animated fadeInUp">
+      <div role="tabpanel" class="tab-pane active" id="tab-1">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md" translate="interface.all.SUPPORT_TICKETS">Support tickets</div>
+          <ul class="list-group no-bg no-borders pull-in">
+           <!--  <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">  
+                <img src="img/a4.jpg" alt="..." class="img-circle">
+                <i class="on b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Chris Fox</a></div>
+                <small class="text-muted">California Adventure</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a5.jpg" alt="..." class="img-circle">
+                <i class="on b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Mogen Polish</a></div>
+                <small class="text-muted">ECOWILD TOURS</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a6.jpg" alt="..." class="img-circle">
+                <i class="busy b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Joge Lucky</a></div>
+                <small class="text-muted">Travels & Trips</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a7.jpg" alt="..." class="img-circle">
+                <i class="away b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Folisise Chosielie</a></div>
+                <small class="text-muted">Andes Proadventures</small>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <a herf class="pull-left thumb-sm avatar m-r">
+                <img src="img/a8.jpg" alt="..." class="img-circle">
+                <i class="away b-white bottom"></i>
+              </a>
+              <div class="clear">
+                <div><a href>Aron Gonzalez</a></div>
+                <small class="text-muted">Global Travels</small>
+              </div>
+            </li> -->
+          </ul>
+                   
+        </div>
+                      
+      </div>
+ 
+      <div role="tabpanel" class="tab-pane tab-3" id="tab-3">
+        <div class="wrapper-md">
+          <div class="m-b-sm text-md" translate="interface.all.RECENT">Recent sales</div>
+          <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
+          <!--   <li class="list-group-item">
+              <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
+              <span class="block text-md text-info">B 15,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Got from Mike at 1:00 pm</span>
+              <span class="block text-md text-primary">B 23,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Sponsored ORG at 9:00 am</span>
+              <span class="block text-md text-warning">B 3,000.00</span>
+            </li>
+            <li class="list-group-item">
+              <span class="text-muted">Send to Jacob at 8:00 am</span>
+              <span class="block text-md">B 11,000.00</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<!-- fin  -->
+
+  
+    <div data-ng-include=" 'tpl/blocks/aside.right.html' ">
+      {% include '../tpl/blocks/aside.right.html' %}
+    </div>
+  </div>
+  <!-- / right col -->
+</div>
+
+<!-- Vendor's Dashboard -->
+
+
+

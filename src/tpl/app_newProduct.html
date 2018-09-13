@@ -1,0 +1,252 @@
+ <div class=" wrapper-md">
+  <h1 class="m-n font-thin h3" ><i class="glyph-icon flaticon-shopping-basket icon " ></i> <spam class="m-n font-thin h3" translate="interface.products.NEW_PRODUCT">New Product</spam>
+  <span ng-controller="ModalDemoCtrl" class="pull-right">
+      <button class="btn btn-primary btn-rounded " ng-click="products()"><I class="fa fa-list"></I></button>
+    </spam></h1>
+</div>
+<div class="wrapper-md bg-light lter" ng-controller="NewProductCtrl">
+ <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div class="panel panel-default">
+        <div class="panel-body">
+          <form name="form1" class="form-horizontal form-validation">
+           
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.products.PRODUCT_NAME"></label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control rounded" ng-model="item.productName" required >                       
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.products.DESCRIPTION"></label>
+              <div class="col-sm-7">
+                 <textarea class="form-control" rows="4" ng-model="item.description"> </textarea>                      
+              </div>
+            </div>
+            
+
+            <div class="form-group">
+              <div class="col-sm-4 control-label" >
+                    <span translate="interface.products.CATEGORY"></span>      
+              </div>  
+             <!--  <div class="col-sm-4">
+                <ui-select ng-model="item.category" theme="bootstrap" >
+                      <ui-select-match >{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices group-by="'name'" repeat="item.name as item in categorys | filter: $select.search">
+                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                      </ui-select-choices>
+                </ui-select>
+              </div> -->
+
+                <div class="col-sm-4">
+                  <ui-select multiple ng-model="item.category" theme="bootstrap" ng-disabled="disabled">
+                    <ui-select-match placeholder="Category...">{{$item.name}} </ui-select-match>
+                    <ui-select-choices group-by="someGroupFn" repeat="item.name as item in categorys | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="item.name | highlight: $select.search"></div>
+                 
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+
+
+            </div>
+
+            <div class="line line-dashed b-b line-lg "></div>
+                  
+        <div class="form-group">
+          <label class="col-sm-4 control-label" translate="interface.products.RESERVATION_REQUIRED"></label>
+          <div class="col-sm-4">
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option1" ng-model="item.reservationRequired"><i></i> 
+            </label>
+           
+          </div>
+        </div>
+
+          <!--  <div class="form-group" ng-hide="!item.reservationRequired">
+           <label class="col-sm-4 control-label" translate="interface.products.RESERVATION_DATE"></label>
+          <div class="col-sm-4" >
+            <div class="input-group w-md">
+              <input type="text" class="form-control" datepicker-popup="{{format}}"  is-open="opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" ng-model="item.reservationDate"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </div>
+        </div> -->
+
+                    <div class="line line-dashed b-b line-lg "></div>
+
+
+             <div class="form-group">
+              <div class="col-sm-4 control-label" >
+                    <span translate="interface.products.COMPANY_NAME_A"></span>      
+              </div>  
+              <div class="col-sm-4">
+                <ui-select ng-model="item.idPartner" theme="bootstrap" required >
+                      <ui-select-match >{{$select.selected.companyName}}</ui-select-match>
+                      <ui-select-choices group-by="'companyName'" repeat="item.id as item in companys | filter: $select.search">
+                        <span ng-bind-html="item.companyName | highlight: $select.search"></span>
+                      </ui-select-choices>
+                </ui-select>
+              </div>
+            </div>
+
+              
+
+              <div class="line line-dashed b-b line-lg "></div>
+
+             <div class="col-sm-4 control-label">
+                    <span translate="interface.products.PRICES" >: 
+                </div>
+                <div class="col-sm-8 ">
+              <a  class="btn btn-xs btn-success rounded pull-right"  ng-click="add() " ><i  class="fa fa-plus"></i> <span translate="interface.products.PRICE"></span></a>
+              </div>
+              </br>
+              </br>
+              <p></p>
+               <div class="form-group" >
+
+                <div class="col-sm-2  pull-left" >
+                  <span translate="interface.products.TYPE_PRICE"></span>
+                </div>
+               <div class="col-sm-2 " >
+                  <span translate="interface.products.PRICE"></span>
+                </div>
+                 <div class="col-sm-3" >
+                  <span translate="interface.products.PRICE_NET"></span>
+                </div>
+                 <div class="col-sm-2" >
+                  <span translate="interface.products.COMMISSION"></span>
+                </div>
+                </div>
+               
+
+              <div class="form-group" ng-repeat="item in itemsPrice">
+                 
+
+                 <div class="col-sm-2">
+                   <input type="text"  class="form-control rounded"  ng-model="item.label" >
+                  </div>
+              
+                <div class="col-sm-2">
+                  <input type="number"  class="form-control rounded"  ng-model="item.price" min="0">
+                </div>
+                <div class="col-sm-2">
+                  <input type="number"  class="form-control rounded"  ng-model="item.priceNet" min="0">
+                </div>
+                <div class="col-sm-4">
+                    <span translate="interface.products.FIXED_AMOUNT"> </span>
+                       <label class="i-switch bg-primary m-t-xs m-r">
+                        <input type="radio"  value="fixed" ng-model="item.checked" checked>
+                        <i></i>
+                      </label>
+
+                     <span translate="interface.products.PERCENTAGE"></span>
+                    
+                      <label class="i-switch bg-primary m-t-xs m-r">
+                        <input type="radio"  value="percentage" ng-model="item.checked">
+                        <i></i>
+                      </label>
+         
+                </div>
+
+                 <div class="col-sm-2" ng-show="item.checked == 'fixed'">
+                  <input type="number"  class="form-control rounded" min="0"  ng-model="item.commissionF">
+                </div>
+                 <div class="col-sm-2" ng-show="item.checked == 'percentage'">
+                  <input type="number"  class="form-control rounded"  min="0" max="100" placeholder="%" ng-model="item.commissionP">
+                </div>
+              </div>
+
+              <div class="line line-dashed b-b line-lg "></div>
+
+              <div class="line line-dashed b-b line-lg "></div>
+
+                 <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.products.NOTES"></label>
+              <div class="col-sm-7">
+                <textarea class="form-control" rows="4" ng-model="item.notes"> </textarea>                      
+                </div>
+            </div>
+
+
+               <div class="line line-dashed b-b line-lg "></div>
+          
+                <div class="form-group">
+              <label class="col-sm-4 control-label"  translate="interface.products.IMAGES"></label>
+              <div class="col-sm-7">
+                <input type="file" nv-file-select="" uploader="uploader" multiple  />  
+              </div>
+            </div>
+
+            <div class="wrapper-md">
+      <table class="table bg-white-only b-a">
+          <thead>
+              <tr>
+                  <th width="50%"><span translate="interface.fileUpload.NAME"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.SIZE"></span></th>
+                  <th ng-show="uploader.isHTML5"><span translate="interface.fileUpload.PROGRESS"></span></th>
+                  <th><span translate="interface.fileUpload.STATUS"></span></th>
+                  <th><span translate="interface.fileUpload.ACTIONS"></span></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="item in uploader.queue">
+                  <td><strong>{{ item.file.name }}</strong></td>
+                  <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                  <td ng-show="uploader.isHTML5">
+                      <div class="progress progress-sm m-b-none m-t-xs">
+                          <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                      </div>
+                  </td>
+                  <td class="text-center">
+                      <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+                      <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                      <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                  </td>
+                  <td nowrap>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                          <span translate="interface.fileUpload.UPLOAD"></span>
+                      </button>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                          <span translate="interface.fileUpload.CANCEL"></span>
+                      </button>
+                      <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                          <span translate="interface.fileUpload.REMOVE"></span>
+                      </button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <div>
+        <div>
+          <p><span translate="interface.fileUpload.QUEUE_PROGRESS"></span></p>
+          <div class="progress bg-light dker" style="">
+              <div class="progress-bar progress-bar-striped bg-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-addon btn-success" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+          <i class="fa fa-arrow-circle-o-up"></i> <span translate="interface.fileUpload.UPLOAD_ALL"></span>
+        </button>
+        <button type="button" class="btn btn-addon btn-warning" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+          <i class="fa fa-ban"></i> <span translate="interface.fileUpload.CANCEL_ALL"></span>
+        </button>
+        <button type="button" class="btn btn-addon btn-danger" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+            <i class="fa fa-trash-o"></i> <span translate="interface.fileUpload.REMOVE_ALL"></span>
+        </button>
+        <!-- <p class="text-muted m-t-xl">Note: upload.php file included, files will be uploaded to "src/js/controllers/uploads".</p> -->
+      </div>
+    </div>
+             
+                <div class="line line-dashed b-b line-lg "></div>
+
+                 <span class="input-btn pull-right" >
+                <button type="button" class="btn btn-primary rounded" tooltip="save" ng-click="saveNewProduct(item)"><i class="fa fa-save"></i></button>
+              </span>
+
+              </form>
+          </div>
+        </div>  
+
+
+</div>

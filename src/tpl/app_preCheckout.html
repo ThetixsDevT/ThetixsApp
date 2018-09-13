@@ -1,0 +1,52 @@
+
+<div class="bg-light lter b-b wrapper-md" >
+  <h1 class="m-n font-thin h3" translate="interface.all.CHECKOUT"></h1>
+</div>
+<div class="wrapper-md"  ng-controller="FlotChartDemoCtrl">
+  <div class="row">
+    <div class="col-sm-offset-1 col-sm-8"  >
+      <div class="panel panel-default" ng-load="createCard()">
+        <div class="panel-heading font-bold">
+          <span  translate="interface.all.TIXS_DETAILS"></span>
+          <small class="badge bg-dark pull-right">
+            <b>$ {{app.total}}</b>
+          </small>
+          <small class="text-muted pull-right font-bold">TOTAL: 
+          </small>
+        </div>
+        <div class="panel-body">
+          <div class="panel bg-white">
+            <div class="list-group">
+              <a  class="list-group-item" ng-repeat="product in app.productsList track by $index" ui-refresh="app" >
+                <span class="clear block m-b-none" >
+                  <br>
+                    <small class="text-muted"><b>{{product.productName}}</b></small>
+                    <small class="text-muted pull-right"><b>$ {{product.total}}</b> </small>
+                    <small  class="text-muted">
+                      <span style="padding-left: 20px;" ng-repeat="line in product.tixInformation">
+                        <br/>
+                        <span class="col-sm-offset-1  col-sm-4">
+                          {{line.line}} 
+                        </span>  
+                      </span>
+                    </small>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-info btn-rounded pull-right" ng-click="aceptSandBox()" translate="interface.all.MAKE_PAYMENT" ng-show="app.demoUser==true"></button>
+    </div>    
+    <div class="col-sm-2">
+      <button class="btn btn-success btn-rounded pull-right" ng-click="acept()" translate="interface.all.MAKE_PAYMENT" ng-show="app.demoUser==false"></button>
+    </div>  
+  </div>
+</div>
+
+
+
+
+
