@@ -1,8 +1,36 @@
 Creacion de cuenta github para el proyecto en general
+
 Actualizacion archivo de credenciales (incluido en el repositorio)
+	FIRSTDATA
+	Merchant ID:
+	9842-3137-5887
+	cl.gonzalf262
+	Thetixs2017
+
+	PAYEESY
+	https://globalgatewaye4.firstdata.com/
+	thetixsgroup
+	thetixsuoW9
+
+	AWS
+	thetixs@gmail.com
+	Thetixs.2016
+
+	CLOVER SECURITY
+	thetixsgroup
+	Thetixs.2017
+
 Upgrade Instancia Linux de Amazon ubunutu14.04 a ubuntu16.04 (obtener PCI)
+
 Booking Form para www.thetixs.com y para www.thetixsapp.com (este ultimo esta listo)
+
 Collage pagina www.thetixs.com
+
+Video explicativo de ThetixsApp
+
 Contact form para www.thetixs.com
+
 Generacion de reportes (30 - 60 dias de funcionamiento)
+
 Graficos Dashboard affiliate, partner y Administrator
+
