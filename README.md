@@ -16,7 +16,7 @@
 - Sales
 - Products
 
-By Junior Márquez © 2017 - 2018
+Thetixs INC © 2017 - 2018
 
 
 ![GitHub Logo](https://www.thetixsapp.com/assets/img/features/app_block.png)
