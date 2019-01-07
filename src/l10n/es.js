@@ -64,6 +64,7 @@
     "TEXT_DELETE_PARTNER":"Seguro que desea borrar este proveedor?",
     "NO":"No",
     "YES":"Si",
+     "PASSWORD":"Contraseña",
     "DELETE_PARTNER":"Borrar partner"
   },
   "vendors":{

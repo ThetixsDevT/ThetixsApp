@@ -191,7 +191,7 @@ $scope.vendors = [];
           { mData: 'createdAtFormateada'},
           {mData:'fullname'},
           { mData: 'phone'},
-          { mData: 'city'},
+          { mData: 'password'},
           { mData: 'country'},
           { mData: 'email'},
           // { mData: 'accion' },

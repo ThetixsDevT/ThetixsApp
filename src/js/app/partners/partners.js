@@ -164,7 +164,7 @@ $scope.partners = [];
           {mData:'address'},
           { mData: 'phone'},
           { mData: 'email'},
-          { mData: 'status'},
+          { mData: 'password'},
           // { mData: 'accion' },
           { mData: 'accion2' }  
             ];

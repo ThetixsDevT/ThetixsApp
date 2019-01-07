@@ -396,6 +396,12 @@ $scope.carga();
       item.editing = true;
     }
   };
+  $scope.changeStatus= function(item){
+        var productAct = {};
+    MyService.data.idenProduct=item.id;
+    productAct = item;
+     $http.put('https://www.thetixsapp.com:1350/product/'+MyService.data.idenProduct , productAct)
+  };
 
   $scope.doneEditingCategory = function(item){
     item.editing = false;

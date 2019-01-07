@@ -105,6 +105,11 @@
                    <i class="fa fa-edit"></i>
                    <span translate="interface.products.PRICES"></span>
                   </button>
+       
+              <label  class="i-switch m-t-xs m-r"  popover="active/inactive" popover-trigger="mouseenter" popover-placement="bottom" ng-hide="item.editing || !item"> 
+              <input type="checkbox" ng-model="item.status" ng-click="changeStatus(item)">
+              <i></i>
+</label>
         </div>
        <!--  <div class="btn-edit" ng-show="item">
                   

@@ -61,6 +61,7 @@
     "DATE_REG":"Date Reg.",
     "PHONE":"Phone",
     "STATUS":"Status",
+    "PASSWORD":"Password",
     "ACTIONS":"Actions",
     "TEXT_DELETE_PARTNER":"Surely you want to delete this partner?",
     "NO":"No",
