@@ -151,7 +151,7 @@ $scope.vendors = [];
           $scope.vendorsActive[i].createdAtFormateada=bandera2;
           identif=$scope.vendorsActive[i].id;           
           $scope.vendorsActive[i].country=$scope.vendorsActive[i].country.name;
-          $scope.vendorsActive[i].accion2="<button onclick=\"angular.element(this).scope().deleteVendor('" +identif +"')\"  class=\"btn btn-danger btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-trash\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().viewVendor2('" +identif +"')\"  class=\"btn btn-info btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-eye\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i>" ;                        
+          $scope.vendorsActive[i].accion2="<button onclick=\"angular.element(this).scope().deleteVendor('" +identif +"')\"  class=\"btn btn-danger btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-trash\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().viewVendor2('" +identif +"')\"  class=\"btn btn-info btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-eye\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().sendCredentials('" +identif +"')\"  class=\"btn btn-success btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-bolt\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i>" ;                        
 
           // $scope.vendorsActive[i].accion2="<button onclick=\"angular.element(this).scope().deleteVendor('" +identif +"')\"  class=\"btn btn-danger btn-xs\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-trash\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().viewVendor('" +identif +"')\"  class=\"btn btn-danger btn-xs\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\">Borrar</span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i>";                        
           }
@@ -304,7 +304,9 @@ $scope.getVendors();
     };
 
 
-  $scope.deleteVendor =function(item){
+
+
+  $scope.sendCredentials =function(item){
       var identificador = item;
       $http.get('https://www.thetixsapp.com:1350/vendor/'+identificador).success(function(respuesta){        
         $scope.item=respuesta; 
@@ -313,7 +315,7 @@ $scope.getVendors();
         var item=[];
         var datosCuenta="";
         var modalInstance = $modal.open({
-          templateUrl: 'modalDeleteVendor.html',
+          templateUrl: 'modalSuccessCredentialsA.html',
           controller: 'ModalInstanceCtrl',
           size: 'sm',
           resolve: {
@@ -334,7 +336,7 @@ $scope.getVendors();
 
         }, function () {
           $scope.getVendors();
-          $log.info('PartnerSeen dismissed at: ' + new Date());
+          $log.info('VendorSeen dismissed at: ' + new Date());
           $state.go('app.welcome');
 
         });
