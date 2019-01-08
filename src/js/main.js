@@ -13,7 +13,7 @@ angular.module('app')
       // config
       $scope.app = {
         name: 'Thetixs App',
-        version: '1.0.0',
+        version: '1.5.1',
         // for chart colors
         color: {
           primary: '#7266ba',
