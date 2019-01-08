@@ -120,6 +120,30 @@
 
     ];
  
+  $scope.okSuccessCredentials = function (item) {
+      var item = item;
+      var id = item.id;
+      // item.password="l4mism4";
+      $scope.createPassword();
+      item.password=$scope.password;
+      item.status="active";
+      // item.repName=item.name;
+      item.repEmail=item.email;
+      item.receiveremail=item.repEmail;
+      item.text="to Thetixs network. Here is all you need to get started!";
+      var footer="Manager";
+      $http({
+        method:'POST',
+        url:'libs/phpmailer/accountActivate.php',
+        data: 'name='+item.repName +'&receiveremail='+item.receiveremail+'&email='+item.receiveremail+'&footer='+footer+'&text='+item.text+'&password='+item.password+'&emailSender='+MyService.data.managerAccount+'&emailPass='+MyService.data.managerAccountPass+'&managerAccountHost='+MyService.data.managerAccountHost,
+        headers:{'Content-Type':'application/x-www-form-urlencoded'}
+        });
+      // $modalInstance.close($scope.selected.item);
+            $modalInstance.dismiss('cancel');
+    };
+
+
+
 
     $scope.calculator=function(item){
       var item=item;

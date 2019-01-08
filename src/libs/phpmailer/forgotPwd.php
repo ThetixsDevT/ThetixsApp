@@ -46,7 +46,7 @@ $mail->Body    =
              align-content:center;
              ">
             <div align="center" style="padding:10px;" >
-              <img src="http://sohigh.com.ve/l.png">
+              <img src="https://www.thetixsapp.com/web/img/logoT.png">
             </div>
           </div>
 

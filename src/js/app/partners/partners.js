@@ -128,7 +128,7 @@ $scope.partners = [];
           bandera2=$filter('date')(new Date(bandera),'dd/MM/yyyy');
           $scope.partnersActive[i].createdAtFormateada=bandera2;
           identif=$scope.partnersActive[i].id;           
-  $scope.partnersActive[i].accion2="<button onclick=\"angular.element(this).scope().deletePartner('" +identif +"')\"  class=\"btn btn-danger btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-trash\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().viewPartner2('" +identif +"')\"  class=\"btn btn-info btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-eye\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i>" ;                                       
+  $scope.partnersActive[i].accion2="<button onclick=\"angular.element(this).scope().deletePartner('" +identif +"')\"  class=\"btn btn-danger btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-trash\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().viewPartner2('" +identif +"')\"  class=\"btn btn-info btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-eye\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i><button onclick=\"angular.element(this).scope().sendCredentials('" +identif +"')\"  class=\"btn btn-success btn-xs btn-rounded\" ui-toggle-class=\"show inline\" target=\"#spin\"> <span class=\"text\"><i class=\"fa fa-bolt\"></i></span>  <span class=\"text-active\">Cargando...</span></button> <i class=\"fa fa-spin fa-spinner hide\" id=\"spin\"></i>" ;                                       
           }
         }
         if ($scope.partnersPending){
@@ -246,6 +246,46 @@ $scope.partners = [];
         });
       }) 
     };
+
+
+
+   
+    $scope.sendCredentials =function(item){
+      var identificador = item;
+      $http.get('https://www.thetixsapp.com:1350/partner/'+identificador).success(function(respuesta){        
+        $scope.item=respuesta; 
+        $scope.items = [];
+        var dato=[];
+        var item=[];
+        var datosCuenta="";
+        var modalInstance = $modal.open({
+          templateUrl: 'modalSuccessCredentials.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'sm',
+          resolve: {
+              dato: function  () {
+                return $scope.item;
+              // body...vendedor
+              },
+              items: function () {
+                return $scope.items;
+              }
+            }
+          });
+        modalInstance.result.then(function () {
+          // $scope.selected = selectedItem;
+          $scope.partners=[];
+            setTimeout(function() { $scope.getPartners();$state.go('app.welcome');}, 2000);
+        }, function () {
+          $scope.getPartners();
+          $log.info('PartnerSeen dismissed at: ' + new Date());
+          $state.go('app.welcome');
+
+        });
+      }) 
+    };
+
+
 
     $scope.viewPartner2 =function(item){
       var identificador = item;
