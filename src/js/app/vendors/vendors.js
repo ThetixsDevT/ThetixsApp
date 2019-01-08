@@ -202,7 +202,6 @@ $scope.vendors = [];
 
     };
     $scope.getVendors();
-
  $scope.deleteVendor =function(item){
       var identificador = item;
       $http.get('https://www.thetixsapp.com:1350/vendor/'+identificador).success(function(respuesta){        
@@ -226,18 +225,19 @@ $scope.vendors = [];
             }
           });
         modalInstance.result.then(function () {
-          // $scope.selected = selectedItem;
-          $scope.partners=[];
-            setTimeout(function() { $scope.getPartners();$state.go('app.welcome');}, 2000);
+        
+              $scope.vendors=[];
+            setTimeout(function() { $scope.getVendors();$state.go('app.welcome');}, 2000);
+            // alert("si"+$scope.lup);
+
         }, function () {
-          $scope.getPartners();
+          $scope.getVendors();
           $log.info('PartnerSeen dismissed at: ' + new Date());
           $state.go('app.welcome');
 
         });
       }) 
     };
-
     $scope.viewVendor =function(item){
       var identificador = item;
       $http.get('https://www.thetixsapp.com:1350/vendor/'+identificador).success(function(respuesta){        
