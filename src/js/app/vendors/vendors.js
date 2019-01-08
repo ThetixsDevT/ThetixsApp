@@ -203,6 +203,40 @@ $scope.vendors = [];
     };
     $scope.getVendors();
 
+ $scope.deleteVendor =function(item){
+      var identificador = item;
+      $http.get('https://www.thetixsapp.com:1350/vendor/'+identificador).success(function(respuesta){        
+        $scope.item=respuesta; 
+        $scope.items = [];
+        var dato=[];
+        var item=[];
+        var datosCuenta="";
+        var modalInstance = $modal.open({
+          templateUrl: 'modalDeleteVendor.html',
+          controller: 'ModalInstanceCtrl',
+          size: 'sm',
+          resolve: {
+              dato: function  () {
+                return $scope.item;
+              // body...vendedor
+              },
+              items: function () {
+                return $scope.items;
+              }
+            }
+          });
+        modalInstance.result.then(function () {
+          // $scope.selected = selectedItem;
+          $scope.partners=[];
+            setTimeout(function() { $scope.getPartners();$state.go('app.welcome');}, 2000);
+        }, function () {
+          $scope.getPartners();
+          $log.info('PartnerSeen dismissed at: ' + new Date());
+          $state.go('app.welcome');
+
+        });
+      }) 
+    };
 
     $scope.viewVendor =function(item){
       var identificador = item;
