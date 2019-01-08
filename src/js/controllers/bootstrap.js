@@ -157,7 +157,7 @@
       $http({
         method:'POST',
         url:'libs/phpmailer/accountActivate.php',
-        data: 'name='+item.repName +'&receiveremail='+item.receiveremail+'&email='+item.receiveremail+'&footer='+footer+'&text='+item.text+'&password='+item.password+'&emailSender='+MyService.data.managerAccount+'&emailPass='+MyService.data.managerAccountPass+'&managerAccountHost='+MyService.data.managerAccountHost,
+        data: 'name='+item.name +'&receiveremail='+item.receiveremail+'&email='+item.receiveremail+'&footer='+footer+'&text='+item.text+'&password='+item.password+'&emailSender='+MyService.data.managerAccount+'&emailPass='+MyService.data.managerAccountPass+'&managerAccountHost='+MyService.data.managerAccountHost,
         headers:{'Content-Type':'application/x-www-form-urlencoded'}
         });
       // $modalInstance.close($scope.selected.item);
@@ -348,7 +348,7 @@
       $http({
         method:'POST',
         url:'libs/phpmailer/accountActivate.php',
-        data: 'name='+item.name +'&receiveremail='+item.receiveremail+'&email='+item.receiveremail+'&footer='+footer+'&text='+item.text+'&password='+item.password+'&emailSender='+MyService.data.managerAccount+'&emailPass='+MyService.data.managerAccountPass+'&managerAccountHost='+MyService.data.managerAccountHost,
+        data: 'name='+item.repName +'&receiveremail='+item.receiveremail+'&email='+item.receiveremail+'&footer='+footer+'&text='+item.text+'&password='+item.password+'&emailSender='+MyService.data.managerAccount+'&emailPass='+MyService.data.managerAccountPass+'&managerAccountHost='+MyService.data.managerAccountHost,
         headers:{'Content-Type':'application/x-www-form-urlencoded'}
         });
       $http.put('https://www.thetixsapp.com:1350/partner/'+id,item);
