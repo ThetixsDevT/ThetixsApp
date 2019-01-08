@@ -124,8 +124,8 @@
       var item = item;
       var id = item.id;
       // item.password="l4mism4";
-      $scope.createPassword();
-      item.password=$scope.password;
+      // $scope.createPassword();
+      // item.password=$scope.password;
       item.status="active";
       // item.repName=item.name;
       item.repEmail=item.email;
@@ -146,8 +146,8 @@
       var item = item;
       var id = item.id;
       // item.password="l4mism4";
-      $scope.createPassword();
-      item.password=$scope.password;
+      // $scope.createPassword();
+      // item.password=$scope.password;
       item.status="active";
       // item.repName=item.name;
       item.repEmail=item.email;
