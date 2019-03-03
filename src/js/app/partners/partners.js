@@ -150,7 +150,7 @@ $scope.partners = [];
           {mData:'address'},
            // {mData:'repName'},
           { mData: 'phone'},
-          { mData: 'email'},
+          { mData: 'repEmail'},
           { mData: 'status'},
           // { mData: 'accion' },
           { mData: 'accion2' }   
@@ -163,7 +163,7 @@ $scope.partners = [];
              {mData:'companyName'},
           {mData:'address'},
           { mData: 'phone'},
-          { mData: 'email'},
+          { mData: 'repEmail'},
           { mData: 'password'},
           // { mData: 'accion' },
           { mData: 'accion2' }  
